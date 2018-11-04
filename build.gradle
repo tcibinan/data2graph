@@ -1,0 +1,58 @@
+buildscript {
+    ext.kotlin_version = '1.3.0'
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://dl.bintray.com/kotlin/kotlin-eap'
+        }
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'org.jetbrains.kotlin:kotlin-frontend-plugin:0.0.37'
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin-platform-js'
+apply plugin: 'kotlinx-serialization'
+apply plugin: 'org.jetbrains.kotlin.frontend'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://dl.bintray.com/kotlin/kotlinx/'
+    }
+}
+
+dependencies {
+    compile "io.data2viz:d2v-data2viz-common:0.7.0"
+    compile "io.data2viz:d2v-data2viz-js:0.7.0"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    compile "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:0.9.0"
+}
+
+compileKotlin2Js {
+    kotlinOptions.metaInfo = true
+    kotlinOptions.outputFile = "$project.buildDir.path/js/${project.name}.js"
+    kotlinOptions.moduleKind = 'commonjs'
+    kotlinOptions.main = "call"
+    kotlinOptions.sourceMap = true
+    kotlinOptions.sourceMapEmbedSources = "always"
+}
+
+kotlinFrontend {
+    sourceMaps = true
+
+    npm {
+        dependency('style-loader', '0.22.1')
+        dependency('css-loader', '1.0.0')
+        dependency('url-loader', '1.1.1')
+    }
+
+    webpackBundle {
+        contentPath = file('src/main/web')
+        mode = 'development'
+        sourceMapEnabled = true
+    }
+}

@@ -1,0 +1,615 @@
+{
+  "nodes": [
+    {
+      "name": "student1"
+    },
+    {
+      "name": "student2"
+    },
+    {
+      "name": "student3"
+    },
+    {
+      "name": "student4"
+    },
+    {
+      "name": "student5"
+    },
+    {
+      "name": "student6"
+    },
+    {
+      "name": "student7"
+    },
+    {
+      "name": "student8"
+    },
+    {
+      "name": "student9"
+    },
+    {
+      "name": "student10"
+    },
+    {
+      "name": "student11"
+    },
+    {
+      "name": "student12"
+    },
+    {
+      "name": "student13"
+    },
+    {
+      "name": "student14"
+    },
+    {
+      "name": "student15"
+    },
+    {
+      "name": "student16"
+    },
+    {
+      "name": "student17"
+    },
+    {
+      "name": "student18"
+    }
+  ],
+  "links": [
+    {
+      "first": "student3",
+      "second": "student18",
+      "weight": 75
+    },
+    {
+      "first": "student7",
+      "second": "student16",
+      "weight": 77
+    },
+    {
+      "first": "student7",
+      "second": "student11",
+      "weight": 77
+    },
+    {
+      "first": "student11",
+      "second": "student16",
+      "weight": 77
+    },
+    {
+      "first": "student13",
+      "second": "student15",
+      "weight": 71
+    },
+    {
+      "first": "student12",
+      "second": "student13",
+      "weight": 73
+    },
+    {
+      "first": "student12",
+      "second": "student15",
+      "weight": 73
+    },
+    {
+      "first": "student5",
+      "second": "student1",
+      "weight": 64
+    },
+    {
+      "first": "student6",
+      "second": "student13",
+      "weight": 66
+    },
+    {
+      "first": "student6",
+      "second": "student12",
+      "weight": 66
+    },
+    {
+      "first": "student6",
+      "second": "student15",
+      "weight": 66
+    },
+    {
+      "first": "student8",
+      "second": "student13",
+      "weight": 58
+    },
+    {
+      "first": "student8",
+      "second": "student15",
+      "weight": 55
+    },
+    {
+      "first": "student8",
+      "second": "student12",
+      "weight": 54
+    },
+    {
+      "first": "student3",
+      "second": "student5",
+      "weight": 51
+    },
+    {
+      "first": "student5",
+      "second": "student18",
+      "weight": 54
+    },
+    {
+      "first": "student3",
+      "second": "student1",
+      "weight": 48
+    },
+    {
+      "first": "student6",
+      "second": "student8",
+      "weight": 53
+    },
+    {
+      "first": "student14",
+      "second": "student16",
+      "weight": 54
+    },
+    {
+      "first": "student7",
+      "second": "student14",
+      "weight": 54
+    },
+    {
+      "first": "student11",
+      "second": "student14",
+      "weight": 54
+    },
+    {
+      "first": "student18",
+      "second": "student1",
+      "weight": 42
+    },
+    {
+      "first": "student4",
+      "second": "student10",
+      "weight": 41
+    },
+    {
+      "first": "student3",
+      "second": "student14",
+      "weight": 36
+    },
+    {
+      "first": "student5",
+      "second": "student14",
+      "weight": 37
+    },
+    {
+      "first": "student5",
+      "second": "student16",
+      "weight": 37
+    },
+    {
+      "first": "student5",
+      "second": "student7",
+      "weight": 37
+    },
+    {
+      "first": "student5",
+      "second": "student11",
+      "weight": 37
+    },
+    {
+      "first": "student14",
+      "second": "student18",
+      "weight": 34
+    },
+    {
+      "first": "student14",
+      "second": "student1",
+      "weight": 31
+    },
+    {
+      "first": "student16",
+      "second": "student1",
+      "weight": 32
+    },
+    {
+      "first": "student7",
+      "second": "student1",
+      "weight": 32
+    },
+    {
+      "first": "student11",
+      "second": "student1",
+      "weight": 32
+    },
+    {
+      "first": "student13",
+      "second": "student2",
+      "weight": 28
+    },
+    {
+      "first": "student12",
+      "second": "student2",
+      "weight": 29
+    },
+    {
+      "first": "student15",
+      "second": "student2",
+      "weight": 30
+    },
+    {
+      "first": "student6",
+      "second": "student2",
+      "weight": 29
+    },
+    {
+      "first": "student13",
+      "second": "student14",
+      "weight": 28
+    },
+    {
+      "first": "student12",
+      "second": "student14",
+      "weight": 29
+    },
+    {
+      "first": "student14",
+      "second": "student15",
+      "weight": 29
+    },
+    {
+      "first": "student6",
+      "second": "student14",
+      "weight": 28
+    },
+    {
+      "first": "student17",
+      "second": "student18",
+      "weight": 27
+    },
+    {
+      "first": "student3",
+      "second": "student17",
+      "weight": 24
+    },
+    {
+      "first": "student8",
+      "second": "student16",
+      "weight": 25
+    },
+    {
+      "first": "student8",
+      "second": "student11",
+      "weight": 25
+    },
+    {
+      "first": "student7",
+      "second": "student8",
+      "weight": 28
+    },
+    {
+      "first": "student3",
+      "second": "student16",
+      "weight": 22
+    },
+    {
+      "first": "student3",
+      "second": "student7",
+      "weight": 22
+    },
+    {
+      "first": "student3",
+      "second": "student11",
+      "weight": 22
+    },
+    {
+      "first": "student16",
+      "second": "student18",
+      "weight": 26
+    },
+    {
+      "first": "student7",
+      "second": "student18",
+      "weight": 26
+    },
+    {
+      "first": "student11",
+      "second": "student18",
+      "weight": 26
+    },
+    {
+      "first": "student8",
+      "second": "student2",
+      "weight": 23
+    },
+    {
+      "first": "student4",
+      "second": "student8",
+      "weight": 22
+    },
+    {
+      "first": "student4",
+      "second": "student13",
+      "weight": 21
+    },
+    {
+      "first": "student4",
+      "second": "student12",
+      "weight": 21
+    },
+    {
+      "first": "student4",
+      "second": "student15",
+      "weight": 21
+    },
+    {
+      "first": "student4",
+      "second": "student6",
+      "weight": 21
+    },
+    {
+      "first": "student4",
+      "second": "student16",
+      "weight": 19
+    },
+    {
+      "first": "student4",
+      "second": "student7",
+      "weight": 19
+    },
+    {
+      "first": "student4",
+      "second": "student11",
+      "weight": 19
+    },
+    {
+      "first": "student7",
+      "second": "student10",
+      "weight": 21
+    },
+    {
+      "first": "student10",
+      "second": "student16",
+      "weight": 20
+    },
+    {
+      "first": "student10",
+      "second": "student11",
+      "weight": 20
+    },
+    {
+      "first": "student4",
+      "second": "student2",
+      "weight": 19
+    },
+    {
+      "first": "student8",
+      "second": "student14",
+      "weight": 17
+    },
+    {
+      "first": "student17",
+      "second": "student1",
+      "weight": 17
+    },
+    {
+      "first": "student3",
+      "second": "student13",
+      "weight": 15
+    },
+    {
+      "first": "student3",
+      "second": "student12",
+      "weight": 15
+    },
+    {
+      "first": "student3",
+      "second": "student15",
+      "weight": 15
+    },
+    {
+      "first": "student3",
+      "second": "student6",
+      "weight": 15
+    },
+    {
+      "first": "student14",
+      "second": "student17",
+      "weight": 18
+    },
+    {
+      "first": "student16",
+      "second": "student17",
+      "weight": 18
+    },
+    {
+      "first": "student7",
+      "second": "student17",
+      "weight": 18
+    },
+    {
+      "first": "student5",
+      "second": "student17",
+      "weight": 16
+    },
+    {
+      "first": "student11",
+      "second": "student17",
+      "weight": 18
+    },
+    {
+      "first": "student5",
+      "second": "student8",
+      "weight": 15
+    },
+    {
+      "first": "student8",
+      "second": "student17",
+      "weight": 14
+    },
+    {
+      "first": "student4",
+      "second": "student14",
+      "weight": 14
+    },
+    {
+      "first": "student10",
+      "second": "student14",
+      "weight": 14
+    },
+    {
+      "first": "student10",
+      "second": "student17",
+      "weight": 11
+    },
+    {
+      "first": "student1",
+      "second": "student2",
+      "weight": 10
+    },
+    {
+      "first": "student5",
+      "second": "student2",
+      "weight": 10
+    },
+    {
+      "first": "student17",
+      "second": "student2",
+      "weight": 10
+    },
+    {
+      "first": "student13",
+      "second": "student18",
+      "weight": 9
+    },
+    {
+      "first": "student12",
+      "second": "student18",
+      "weight": 10
+    },
+    {
+      "first": "student15",
+      "second": "student18",
+      "weight": 10
+    },
+    {
+      "first": "student6",
+      "second": "student18",
+      "weight": 9
+    },
+    {
+      "first": "student13",
+      "second": "student16",
+      "weight": 9
+    },
+    {
+      "first": "student12",
+      "second": "student16",
+      "weight": 9
+    },
+    {
+      "first": "student15",
+      "second": "student16",
+      "weight": 9
+    },
+    {
+      "first": "student7",
+      "second": "student13",
+      "weight": 9
+    },
+    {
+      "first": "student7",
+      "second": "student12",
+      "weight": 9
+    },
+    {
+      "first": "student7",
+      "second": "student15",
+      "weight": 9
+    },
+    {
+      "first": "student6",
+      "second": "student16",
+      "weight": 9
+    },
+    {
+      "first": "student6",
+      "second": "student7",
+      "weight": 9
+    },
+    {
+      "first": "student6",
+      "second": "student11",
+      "weight": 9
+    },
+    {
+      "first": "student11",
+      "second": "student13",
+      "weight": 9
+    },
+    {
+      "first": "student11",
+      "second": "student12",
+      "weight": 9
+    },
+    {
+      "first": "student11",
+      "second": "student15",
+      "weight": 9
+    },
+    {
+      "first": "student3",
+      "second": "student2",
+      "weight": 7
+    },
+    {
+      "first": "student18",
+      "second": "student2",
+      "weight": 7
+    },
+    {
+      "first": "student13",
+      "second": "student17",
+      "weight": 8
+    },
+    {
+      "first": "student12",
+      "second": "student17",
+      "weight": 8
+    },
+    {
+      "first": "student4",
+      "second": "student17",
+      "weight": 7
+    },
+    {
+      "first": "student15",
+      "second": "student17",
+      "weight": 8
+    },
+    {
+      "first": "student6",
+      "second": "student17",
+      "weight": 8
+    },
+    {
+      "first": "student3",
+      "second": "student8",
+      "weight": 6
+    },
+    {
+      "first": "student8",
+      "second": "student18",
+      "weight": 7
+    },
+    {
+      "first": "student8",
+      "second": "student10",
+      "weight": 7
+    },
+    {
+      "first": "student8",
+      "second": "student1",
+      "weight": 7
+    }
+  ]
+}

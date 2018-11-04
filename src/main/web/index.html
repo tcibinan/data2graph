@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>data2viz Force-Directed Graph</title>
+    <style>
+        .threshold-range-container {
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            width: 100%;
+        }
+
+        .threshold-range-container .threshold-range {
+            flex-grow: 1;
+        }
+
+        .threshold-range-monitor-container {
+            position: fixed;
+            left: 0;
+            top: 20px;
+            font-size: 29px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="main-canvas"></canvas>
+<script src="plagiarism-visualization-app.bundle.js"></script>
+<div class="threshold-range-container">
+    <input id="plagiarismMatchThreshold" type="range" class="threshold-range" min="0" max="100" value="75"/>
+    <input id="nodeDistancesShift" type="range" class="threshold-range" min="0" max="200" value="0"/>
+    <input id="plagiarismGraphScale" type="range" class="threshold-range" min="0" max="500" value="300"/>
+</div>
+<div class="threshold-range-monitor-container">
+    <span id="plagiarismMatchThresholdMonitor">75</span><span>%</span><br/>
+    <div>
+        <span>Distances normalization:</span><br/>
+        <label>
+            <input type="radio" name="distanceNormalizationInput" value="none" checked>
+            none<br>
+        </label>
+        <label>
+            <input type="radio" name="distanceNormalizationInput" value="max">
+            max<br>
+        </label>
+        <label>
+            <input type="radio" name="distanceNormalizationInput" value="mean">
+            average
+        </label>
+    </div>
+</div>
+</body>
+</html>
