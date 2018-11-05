@@ -2,12 +2,10 @@ package org.flaxo.plagiarism
 
 import io.data2viz.force.ForceNode
 import io.data2viz.force.ForceSimulation
-import io.data2viz.force.SimulationEvent
 import io.data2viz.force.forceCenter
 import io.data2viz.force.forceNBody
 import io.data2viz.force.forceSimulation
 import io.data2viz.geom.Point
-import io.data2viz.math.random
 import io.data2viz.viz.Circle
 import io.data2viz.viz.Line
 import io.data2viz.viz.Text
@@ -28,6 +26,13 @@ import org.flaxo.plagiarism.support.all
 import org.flaxo.plagiarism.support.inputById
 import org.flaxo.plagiarism.support.inputBySelector
 import org.flaxo.plagiarism.support.spanById
+import kotlin.random.Random
+
+/**
+ * Converts the graph to a data2viz's visualization.
+ */
+fun Graph.toViz(canvasWidth: Int = 800, canvasHeight: Int = 500): Viz =
+        toViz(canvasWidth.toDouble(), canvasHeight.toDouble())
 
 /**
  * Converts the graph to a data2viz's visualization.
@@ -71,13 +76,14 @@ fun Graph.toViz(canvasWidth: Double = 800.0, canvasHeight: Double = 500.0): Viz 
     // Creating force simulation that lasts forever.
     val simulation = forceSimulation {
         alphaDecay = 0.0
-        nodes = this@toViz.nodes.mapIndexed { index, _ -> ForceNode(index, random() * width, random() * height) }
-        on(SimulationEvent.TICK, "tickEvent") { refreshGraph(this@toViz.nodes, links, it) }
+        nodes = this@toViz.nodes.mapIndexed { index, _ ->
+            ForceNode(index, Random.nextDouble() * width, Random.nextDouble() * height)
+        }
     }
 
-    // Basic forces
+    // Adding basic forces.
     simulation.addForce("forceNBody", forceNBody())
-    simulation.addForce("forceCenter", forceCenter(Point(canvasWidth / 2, canvasHeight / 2)))
+    simulation.addForce("forceCenter", forceCenter(Point(width / 2, height / 2)))
 
     onFrame { refreshGraph(nodes, links, simulation) }
 }
@@ -135,7 +141,9 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
 
     // Retrieving set scale, shift and normalization.
     val scale = inputById("plagiarismGraphScale").value.toDouble()
+    spanById("plagiarismGraphScaleMonitor").innerHTML = scale.toString()
     val shift = inputById("nodeDistancesShift").value.toDouble()
+    spanById("nodeDistancesShiftMonitor").innerHTML = shift.toString()
     val normalization = inputBySelector("input[name=\"distanceNormalizationInput\"]:checked").value
             .toNormalization(threshold.toDouble())
 

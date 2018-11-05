@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.controls {
+    min-width: 300px;
+    padding: 10px;
+    border-right: 1px solid lightgray;
+}
+
+.controls input[type=range] {
+    width: 100%;
+}
+
+.controls .input-group {
+    margin-bottom: 20px;
+}
+
+.controls .links {
+    margin-top: 100%;
+}
+
+.controls .links a {
+    text-decoration: none;
+}
+
+.graph {
+    flex-grow: 1;
+}
