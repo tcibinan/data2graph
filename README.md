@@ -4,12 +4,27 @@
 
 > D3 port of the original [force-directed graph](https://beta.observablehq.com/@mbostock/d3-force-directed-graph).
 
-Force-Directed Graph visualization tool based on the incredible [data2viz](https://github.com/data2viz/data2viz) library.
+Force-Directed Graph visualization tool based on the incredible 
+[data2viz](https://github.com/data2viz/data2viz) library.
 
-Tool is a Kotlin-JS project which can be altered to use in desktop or Android easily 
+![plagiarism graph](docs/images/plagiarism_graph.png?raw=true)
+
+The original tool is a Kotlin-JS project which can be altered to use in desktop or Android easily 
 using Kotlin multiplatform capabilities.
 
 Contributions are more than welcome.
+
+## Controls
+
+Tool has four configurable preferences:
+ - Plagiarism weight **threshold**.
+ - Graph links absolute **shift**.
+ - Graph links relative **scale**.
+ - Plagiarism weight **normalization** strategy which has 3 available values:
+   - **disabled** normalization which basically means that weights are just scaled by 100,
+   - **max** normalization which means that weights are scaled by the maximum weight,
+   - **collapsing** normalization that normalizes weights as a binary function: all weights
+   that are above the set threshold are scaled to 1 and 0 otherwise.
 
 ## Data
 
