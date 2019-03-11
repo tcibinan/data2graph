@@ -6,61 +6,6 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<div class="controls">
-    <div class="input-group">
-        <div>Threshold, <span id="plagiarismMatchThresholdMonitor">75</span><span>%</span></div>
-        <label for="plagiarismMatchThreshold">
-            <input id="plagiarismMatchThreshold" type="range" class="threshold-range" min="0" max="100" value="75"/>
-        </label>
-    </div>
-
-    <div class="input-group">
-        <div>Shift, <span id="nodeDistancesShiftMonitor">0</span></div>
-        <label for="nodeDistancesShift">
-            <input id="nodeDistancesShift" type="range" class="threshold-range" min="0" max="200" value="0"/>
-        </label>
-    </div>
-
-    <div class="input-group">
-        <div>Scale, <span id="plagiarismGraphScaleMonitor">300</span></div>
-        <label for="plagiarismGraphScale">
-            <input id="plagiarismGraphScale" type="range" class="threshold-range" min="0" max="500" value="300"/>
-        </label>
-    </div>
-
-    <div class="input-group">
-        <div>Normalization</div>
-        <label>
-            <input type="radio" name="distanceNormalizationInput" value="none" checked>
-            disabled
-            <br/>
-        </label>
-        <label>
-            <input type="radio" name="distanceNormalizationInput" value="max">
-            max
-            <br/>
-        </label>
-        <label>
-            <input type="radio" name="distanceNormalizationInput" value="collapsing">
-            collapsing
-        </label>
-    </div>
-
-    <div class="links">
-        <a href="https://github.com/tcibinan/flaxo">
-            <img src="https://img.shields.io/badge/from_flaxo-with_♥-blue.svg" alt="from_flaxo with_♥" />
-        </a>
-        <a class="github-button"
-           href="https://github.com/tcibinan/graph2viz"
-           data-icon="octicon-star"
-           aria-label="Star tcibinan/graph2viz on GitHub">Star</a>
-        <a class="github-button"
-           href="https://github.com/tcibinan/graph2viz/issues"
-           data-icon="octicon-issue-opened"
-           aria-label="Issue tcibinan/graph2viz on GitHub">Issue</a>
-    </div>
-</div>
-<canvas class="graph" id="main-canvas"></canvas>
 <script src="graph2viz.bundle.js"></script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
