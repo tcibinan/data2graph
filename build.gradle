@@ -58,3 +58,19 @@ kotlinFrontend {
         sourceMapEnabled = true
     }
 }
+
+task assembleFrontend(type: Copy) {
+    dependsOn bundle
+
+    ext.webDir = "$projectDir/src/main/web"
+    ext.webpackBundleDir = "$projectDir/build/bundle"
+    ext.distDir = "$projectDir/build/dist"
+
+    inputs.dir(webDir)
+    inputs.dir(webpackBundleDir)
+    outputs.dir(distDir)
+
+    from webDir
+    from webpackBundleDir
+    into distDir
+}
