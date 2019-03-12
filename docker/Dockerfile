@@ -37,7 +37,7 @@ RUN wget https://github.com/tcibinan/data2graph/archive/$TAG.tar.gz -O data2grap
     && cp -r $DATA2GRAPH_HOME/data2graph-${TAG#v}/* $DATA2GRAPH_HOME/ \
     && rm -r $DATA2GRAPH_HOME/data2graph-${TAG#v} \
     && . /etc/profile.d/nodejs.sh \
-    && $DATA2GRAPH_HOME/gradlew frontend:assembleFrontend -p $DATA2GRAPH_HOME
+    && $DATA2GRAPH_HOME/gradlew assembleFrontend -p $DATA2GRAPH_HOME
 
 # Production stage
 FROM ubuntu:18.04
