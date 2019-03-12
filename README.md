@@ -1,4 +1,5 @@
 [![from_flaxo with_♥](https://img.shields.io/badge/from_flaxo-with_♥-blue.svg)](https://github.com/tcibinan/flaxo)
+[![Docker Cloud Build Status Data2Graph](https://img.shields.io/docker/cloud/build/flaxo/data2graph.svg?label=docker%20build)](https://hub.docker.com/r/flaxo/data2graph)
 
 # data2graph
 
