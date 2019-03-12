@@ -1,18 +1,10 @@
 [![from_flaxo with_♥](https://img.shields.io/badge/from_flaxo-with_♥-blue.svg)](https://github.com/tcibinan/flaxo)
 
-# Data2viz Force-Directed Graph
+# data2graph
 
-> D3 port of the original [force-directed graph](https://beta.observablehq.com/@mbostock/d3-force-directed-graph).
-
-Force-Directed Graph visualization tool based on the incredible 
-[data2viz](https://github.com/data2viz/data2viz) library.
-
-![plagiarism graph](docs/images/plagiarism_graph.png?raw=true)
-
-The original tool is a Kotlin-JS project which can be altered to use in desktop or Android easily 
-using Kotlin multiplatform capabilities.
-
-Contributions are more than welcome.
+data2graph is a Kotlin-JS web application that helps visualize graphs in a force-directed manner. It is a 
+[data2viz](https://github.com/data2viz/data2viz) port of the original 
+[d3.js force-directed graph](https://beta.observablehq.com/@mbostock/d3-force-directed-graph).
 
 ## Controls
 
@@ -26,9 +18,20 @@ Tool has four configurable preferences:
    - **collapsing** normalization that normalizes weights as a binary function: all weights
    that are above the set threshold are scaled to 1 and 0 otherwise.
 
-## Data
+## Custom graph
 
-Example shows anonymized data of a plagiarism report that was collected for an actual programming university course.
+Data2Viz can be used to visualize any properly formatted graph json that is accessible by `GET` endpoint. To show 
+custom graph just add postfix with your graph json endpoint: 
+
+```
+http://localhost:8088/?graph_url=http://yourendpoint.com/data.json
+```
+
+## Demo
+
+Demo shows graph of an anonymized plagiarism report that was collected for an actual university programming course.
+
+![plagiarism graph](docs/images/plagiarism_graph.png?raw=true)
 
 ## Building
 
