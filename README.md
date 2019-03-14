@@ -32,7 +32,7 @@ http://localhost:8088/?graph_url=http://yourendpoint.com/data.json
 
 Demo shows graph of an anonymized plagiarism report that was collected for an actual university programming course.
 
-![plagiarism graph](docs/images/plagiarism_graph.png?raw=true)
+![plagiarism graph](https://github.com/tcibinan/data2graph/raw/master/docs/images/plagiarism_graph.png)
 
 ## Building
 
