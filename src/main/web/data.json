@@ -60,667 +60,778 @@
       "first": "student3",
       "second": "student18",
       "weight": 75,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student7",
       "second": "student16",
       "weight": 77,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student7",
       "second": "student11",
       "weight": 77,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student11",
       "second": "student16",
       "weight": 77,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student13",
       "second": "student15",
       "weight": 71,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student12",
       "second": "student13",
       "weight": 73,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student12",
       "second": "student15",
       "weight": 73,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student5",
       "second": "student1",
       "weight": 64,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student6",
       "second": "student13",
       "weight": 66,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student6",
       "second": "student12",
       "weight": 66,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student6",
       "second": "student15",
       "weight": 66,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student8",
       "second": "student13",
       "weight": 58,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student8",
       "second": "student15",
       "weight": 55,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student8",
       "second": "student12",
       "weight": 54,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student3",
       "second": "student5",
       "weight": 51,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student5",
       "second": "student18",
       "weight": 54,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student3",
       "second": "student1",
       "weight": 48,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student6",
       "second": "student8",
       "weight": 53,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student14",
       "second": "student16",
       "weight": 54,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student7",
       "second": "student14",
       "weight": 54,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student11",
       "second": "student14",
       "weight": 54,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student18",
       "second": "student1",
       "weight": 42,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student4",
       "second": "student10",
       "weight": 41,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student3",
       "second": "student14",
       "weight": 36,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student5",
       "second": "student14",
       "weight": 37,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student5",
       "second": "student16",
       "weight": 37,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student5",
       "second": "student7",
       "weight": 37,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student5",
       "second": "student11",
       "weight": 37,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student14",
       "second": "student18",
       "weight": 34,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student14",
       "second": "student1",
       "weight": 31,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student16",
       "second": "student1",
       "weight": 32,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student7",
       "second": "student1",
       "weight": 32,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student11",
       "second": "student1",
       "weight": 32,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student13",
       "second": "student2",
       "weight": 28,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student12",
       "second": "student2",
       "weight": 29,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student15",
       "second": "student2",
       "weight": 30,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student6",
       "second": "student2",
       "weight": 29,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student13",
       "second": "student14",
       "weight": 28,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student12",
       "second": "student14",
       "weight": 29,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student14",
       "second": "student15",
       "weight": 29,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student6",
       "second": "student14",
       "weight": 28,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student17",
       "second": "student18",
       "weight": 27,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student3",
       "second": "student17",
       "weight": 24,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student8",
       "second": "student16",
       "weight": 25,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student8",
       "second": "student11",
       "weight": 25,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student7",
       "second": "student8",
       "weight": 28,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student3",
       "second": "student16",
       "weight": 22,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student3",
       "second": "student7",
       "weight": 22,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student3",
       "second": "student11",
       "weight": 22,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student16",
       "second": "student18",
       "weight": 26,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student7",
       "second": "student18",
       "weight": 26,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student11",
       "second": "student18",
       "weight": 26,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student8",
       "second": "student2",
       "weight": 23,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student4",
       "second": "student8",
       "weight": 22,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student4",
       "second": "student13",
       "weight": 21,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student4",
       "second": "student12",
       "weight": 21,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student4",
       "second": "student15",
       "weight": 21,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student4",
       "second": "student6",
       "weight": 21,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student4",
       "second": "student16",
       "weight": 19,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student4",
       "second": "student7",
       "weight": 19,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student4",
       "second": "student11",
       "weight": 19,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student7",
       "second": "student10",
       "weight": 21,
-      "directedTo": "first"
+      "directedTo": "first",
+      "url": "data.json"
     },
     {
       "first": "student10",
       "second": "student16",
       "weight": 20,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student10",
       "second": "student11",
       "weight": 20,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student4",
       "second": "student2",
       "weight": 19,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student8",
       "second": "student14",
       "weight": 17,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student17",
       "second": "student1",
       "weight": 17,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student3",
       "second": "student13",
       "weight": 15,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student3",
       "second": "student12",
       "weight": 15,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student3",
       "second": "student15",
       "weight": 15,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student3",
       "second": "student6",
       "weight": 15,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student14",
       "second": "student17",
       "weight": 18,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student16",
       "second": "student17",
       "weight": 18,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student7",
       "second": "student17",
       "weight": 18,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student5",
       "second": "student17",
       "weight": 16,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student11",
       "second": "student17",
       "weight": 18,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student5",
       "second": "student8",
       "weight": 15,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student8",
       "second": "student17",
       "weight": 14,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student4",
       "second": "student14",
       "weight": 14,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student10",
       "second": "student14",
       "weight": 14,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student10",
       "second": "student17",
       "weight": 11,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student1",
       "second": "student2",
       "weight": 10,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student5",
       "second": "student2",
       "weight": 10,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student17",
       "second": "student2",
       "weight": 10,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student13",
       "second": "student18",
       "weight": 9,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student12",
       "second": "student18",
       "weight": 10,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student15",
       "second": "student18",
       "weight": 10,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student6",
       "second": "student18",
       "weight": 9,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student13",
       "second": "student16",
       "weight": 9,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student12",
       "second": "student16",
       "weight": 9,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student15",
       "second": "student16",
       "weight": 9,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student7",
       "second": "student13",
       "weight": 9,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student7",
       "second": "student12",
       "weight": 9,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student7",
       "second": "student15",
       "weight": 9,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student6",
       "second": "student16",
       "weight": 9,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student6",
       "second": "student7",
       "weight": 9,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student6",
       "second": "student11",
       "weight": 9,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student11",
       "second": "student13",
       "weight": 9,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student11",
       "second": "student12",
       "weight": 9,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student11",
       "second": "student15",
       "weight": 9,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student3",
       "second": "student2",
       "weight": 7,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student18",
       "second": "student2",
       "weight": 7,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student13",
       "second": "student17",
       "weight": 8,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student12",
       "second": "student17",
       "weight": 8,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student4",
       "second": "student17",
       "weight": 7,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student15",
       "second": "student17",
       "weight": 8,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student6",
       "second": "student17",
       "weight": 8,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student3",
       "second": "student8",
       "weight": 6,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student8",
       "second": "student18",
       "weight": 7,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student8",
       "second": "student10",
       "weight": 7,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     },
     {
       "first": "student8",
       "second": "student1",
       "weight": 7,
-      "directedTo": "second"
+      "directedTo": "second",
+      "url": "data.json"
     }
   ]
 }
