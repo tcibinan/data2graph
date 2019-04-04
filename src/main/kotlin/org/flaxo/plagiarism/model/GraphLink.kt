@@ -38,5 +38,11 @@ class GraphLink(
          */
         @Optional
         @Serializable(with = DirectionSerializer::class)
-        val directedTo: Direction? = null
+        val directedTo: Direction? = null,
+
+        /**
+         * Link details web URL.
+         */
+        @Optional
+        val url: String? = null
 )
