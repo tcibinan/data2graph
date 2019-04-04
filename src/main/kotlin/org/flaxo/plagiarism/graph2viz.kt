@@ -27,14 +27,12 @@ import org.flaxo.plagiarism.support.Configuration
 import org.flaxo.plagiarism.support.Mouse
 import org.flaxo.plagiarism.support.all
 import org.flaxo.plagiarism.support.distanceTo
+import org.flaxo.plagiarism.support.getPoint
 import org.flaxo.plagiarism.support.inCoordinatesOf
 import org.flaxo.plagiarism.support.inputById
 import org.flaxo.plagiarism.support.inputBySelector
 import org.flaxo.plagiarism.support.spanById
-import org.w3c.dom.Element
 import org.w3c.dom.HTMLCanvasElement
-import org.w3c.dom.events.Event
-import org.w3c.dom.events.MouseEvent
 import kotlin.browser.document
 import kotlin.browser.window
 import kotlin.math.sqrt
@@ -124,23 +122,6 @@ fun Graph.toViz(canvasWidth: Double = Configuration.Canvas.width.toDouble(),
 }
 
 /**
- * Returns mouse pointer coordinates according to the receiver mouse event.
- *
- * Returning point has coordinates relative to the event target element.
- */
-private fun Event.getPoint(): Point? {
-    val event = this as? MouseEvent
-    val target = event?.target as? Element
-    val clientRect = target?.getBoundingClientRect()
-    if (event != null && clientRect != null) {
-        val x = event.clientX - clientRect.left
-        val y = event.clientY - clientRect.top
-        return Point(x, y)
-    }
-    return null
-}
-
-/**
  * Refreshes the visualization according to the simulation changes and the user's input.
  */
 fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation: ForceSimulation, mouse: Mouse) {
@@ -206,10 +187,11 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
         if (directionEnabled && link.directedTo != null) setArrowLinesPosition(line, arrowLines, link.directedTo)
     }
 
-    // Resetting the cursor
+    // Resetting the cursor.
     document.body?.style?.cursor = "auto"
 
-    val closestLineLink = all<Line>()
+    // Finding the closest line link pair.
+    val closestLineLinkPair = all<Line>()
             .mapIndexed { index, line -> line to links[index] }
             .filter { (line, link) ->
                 link.weight > threshold
@@ -217,8 +199,10 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
                         && mouse.point inCoordinatesOf line
             }
             .minBy { (line, _) -> line distanceTo mouse.point }
-    if (closestLineLink != null) {
-        val (line, link) = closestLineLink
+
+    // Highlighting the closest line and handling line clicks.
+    if (closestLineLinkPair != null) {
+        val (line, link) = closestLineLinkPair
         with(line.style) {
             stroke = ColorScheme.Link.selected
             strokeWidth = Configuration.Link.selectedStrokeWidth
