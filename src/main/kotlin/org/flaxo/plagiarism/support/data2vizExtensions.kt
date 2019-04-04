@@ -13,7 +13,7 @@ import kotlin.math.sqrt
 /**
  * Returns all elements of type [T] that exist in the current visualization.
  */
-inline fun <reified T: Node> Viz.all(): List<T> =
+inline fun <reified T : Node> Viz.all(): List<T> =
         activeLayer.children.asSequence()
                 .filter { it is T }
                 .map { it as T }

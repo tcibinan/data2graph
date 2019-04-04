@@ -20,9 +20,10 @@ import org.flaxo.plagiarism.model.GraphLink
 import org.flaxo.plagiarism.model.GraphNode
 import org.flaxo.plagiarism.normalization.CollapsingNormalization
 import org.flaxo.plagiarism.normalization.DefaultNormalization
-import org.flaxo.plagiarism.normalization.DistancesNormalization
 import org.flaxo.plagiarism.normalization.MaximumNormalization
+import org.flaxo.plagiarism.support.Click
 import org.flaxo.plagiarism.support.ColorScheme
+import org.flaxo.plagiarism.support.Configuration
 import org.flaxo.plagiarism.support.Mouse
 import org.flaxo.plagiarism.support.all
 import org.flaxo.plagiarism.support.distanceTo
@@ -32,6 +33,7 @@ import org.flaxo.plagiarism.support.inputBySelector
 import org.flaxo.plagiarism.support.spanById
 import org.w3c.dom.Element
 import org.w3c.dom.HTMLCanvasElement
+import org.w3c.dom.events.Event
 import org.w3c.dom.events.MouseEvent
 import kotlin.browser.document
 import kotlin.browser.window
@@ -46,13 +48,16 @@ private const val maxArrowLengthProportionY = 3
 /**
  * Converts the graph to a data2viz's visualization.
  */
-fun Graph.toViz(canvasWidth: Int = 800, canvasHeight: Int = 500): Viz =
-        toViz(canvasWidth.toDouble(), canvasHeight.toDouble())
+fun Graph.toViz(canvasWidth: Int = Configuration.Canvas.width,
+                canvasHeight: Int = Configuration.Canvas.height
+): Viz = toViz(canvasWidth.toDouble(), canvasHeight.toDouble())
 
 /**
  * Converts the graph to a data2viz's visualization.
  */
-fun Graph.toViz(canvasWidth: Double = 800.0, canvasHeight: Double = 500.0): Viz = viz {
+fun Graph.toViz(canvasWidth: Double = Configuration.Canvas.width.toDouble(),
+                canvasHeight: Double = Configuration.Canvas.height.toDouble()
+): Viz = viz {
 
     width = canvasWidth
     height = canvasHeight
@@ -62,7 +67,7 @@ fun Graph.toViz(canvasWidth: Double = 800.0, canvasHeight: Double = 500.0): Viz 
         line {
             with(style) {
                 stroke = ColorScheme.Link.default
-                strokeWidth = 3.0
+                strokeWidth = Configuration.Link.strokeWidth
             }
         }
     }
@@ -79,11 +84,11 @@ fun Graph.toViz(canvasWidth: Double = 800.0, canvasHeight: Double = 500.0): Viz 
     // Creating a circle with associated text for each node.
     nodes.forEach { node ->
         circle {
-            radius = 5.0
+            radius = Configuration.Node.radius
             with(style) {
                 fill = ColorScheme.Node.default
                 stroke = ColorScheme.Node.stroke
-                strokeWidth = 2.0
+                strokeWidth = Configuration.Node.strokeWidth
             }
         }
         text {
@@ -111,24 +116,28 @@ fun Graph.toViz(canvasWidth: Double = 800.0, canvasHeight: Double = 500.0): Viz 
 
     val mouse = Mouse()
     val canvas = document.getElementById("main-canvas") as? HTMLCanvasElement
-    canvas?.onmousemove = { e ->
-        val event = e as? MouseEvent
-        val target = event?.target as? Element
-        val clientRect = target?.getBoundingClientRect()
-        if (event != null && clientRect != null) {
-            mouse.point = Point(
-                    x = event.clientX - clientRect.left,
-                    y = event.clientY - clientRect.top
-            )
-        }
-    }
-    canvas?.onclick = {
-        mouse.clicked = true
-        42
-    }
+    canvas?.onmousemove = { e -> e.getPoint()?.also { mouse.point = it } }
+    canvas?.onclick = { e -> e.getPoint()?.also { mouse.click = Click(it) } }
     onFrame {
         refreshGraph(nodes, links, simulation, mouse)
     }
+}
+
+/**
+ * Returns mouse pointer coordinates according to the receiver mouse event.
+ *
+ * Returning point has coordinates relative to the event target element.
+ */
+private fun Event.getPoint(): Point? {
+    val event = this as? MouseEvent
+    val target = event?.target as? Element
+    val clientRect = target?.getBoundingClientRect()
+    if (event != null && clientRect != null) {
+        val x = event.clientX - clientRect.left
+        val y = event.clientY - clientRect.top
+        return Point(x, y)
+    }
+    return null
 }
 
 /**
@@ -147,6 +156,7 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
     linkLines.forEachIndexed { index, line ->
         with(line.style) {
             stroke = if (links[index].weight > threshold) ColorScheme.Link.default else ColorScheme.blank
+            strokeWidth = Configuration.Link.strokeWidth
         }
     }
 
@@ -196,38 +206,44 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
         if (directionEnabled && link.directedTo != null) setArrowLinesPosition(line, arrowLines, link.directedTo)
     }
 
-    var anyCrossings = false
-    // Updating lines selected by the mouse.
-    all<Line>().forEachIndexed { index, line ->
-        val distanceToLine = line distanceTo mouse.point
-        if (line.style.stroke != ColorScheme.blank
-                && distanceToLine  < 10
-                && mouse.point inCoordinatesOf line) {
-            anyCrossings = true
-            with(line.style) {
-                stroke = ColorScheme.Link.selected
-                strokeWidth = 6.0
+    // Resetting the cursor
+    document.body?.style?.cursor = "auto"
+
+    val closestLineLink = all<Line>()
+            .mapIndexed { index, line -> line to links[index] }
+            .filter { (line, link) ->
+                link.weight > threshold
+                        && line distanceTo mouse.point < Configuration.Mouse.triggerDistance
+                        && mouse.point inCoordinatesOf line
             }
-            if (mouse.clicked) {
-                val graphLink = links[index]
-                if (graphLink.url != null) {
-                    window.location.href = graphLink.url
-                }
-                mouse.clicked = false
-            }
-        } else {
-            line.style.strokeWidth = 3.0
+            .minBy { (line, _) -> line distanceTo mouse.point }
+    if (closestLineLink != null) {
+        val (line, link) = closestLineLink
+        with(line.style) {
+            stroke = ColorScheme.Link.selected
+            strokeWidth = Configuration.Link.selectedStrokeWidth
         }
+        val clickPoint = mouse.click?.point
+        if (clickPoint != null
+                && line distanceTo clickPoint < Configuration.Mouse.triggerDistance
+                && clickPoint inCoordinatesOf line) {
+            if (link.url != null) {
+                window.location.href = link.url
+            }
+        }
+        document.body?.style?.cursor = "pointer"
     }
-    document.body?.style?.cursor = if (anyCrossings) "pointer" else "auto"
 
     // Retrieving set scale, shift and normalization.
     val scale = inputById("plagiarismGraphScale").value.toDouble()
     spanById("plagiarismGraphScaleMonitor").innerHTML = scale.toString()
     val shift = inputById("nodeDistancesShift").value.toDouble()
     spanById("nodeDistancesShiftMonitor").innerHTML = shift.toString()
-    val normalization = inputBySelector("input[name=\"distanceNormalizationInput\"]:checked").value
-            .toNormalization(threshold.toDouble())
+    val normalization = when (inputBySelector("input[name=\"distanceNormalizationInput\"]:checked").value) {
+        "max" -> MaximumNormalization()
+        "collapsing" -> CollapsingNormalization(threshold.toDouble())
+        else -> DefaultNormalization()
+    }
 
     // Replacing graph force with the new one that is created according to the user's input.
     val graphForce = GraphForce(links, nodes, normalization, scale, shift)
@@ -293,16 +309,3 @@ fun calculateRelativeX(x: Double, y: Double, sin: Double, cos: Double, x0: Doubl
  */
 fun calculateRelativeY(x: Double, y: Double, sin: Double, cos: Double, y0: Double) =
         x * sin + y * cos + y0
-
-/**
- * Converts the string to a normalization strategy.
- *
- * @param threshold Plagiarism weight threshold.
- */
-// TODO 04.04.19: Inline the function.
-private fun String.toNormalization(threshold: Double): DistancesNormalization =
-        when (this) {
-            "max" -> MaximumNormalization()
-            "collapsing" -> CollapsingNormalization(threshold)
-            else -> DefaultNormalization()
-        }
