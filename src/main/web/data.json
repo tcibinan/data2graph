@@ -59,557 +59,668 @@
     {
       "first": "student3",
       "second": "student18",
-      "weight": 75
+      "weight": 75,
+      "directedTo": "FIRST"
     },
     {
       "first": "student7",
       "second": "student16",
-      "weight": 77
+      "weight": 77,
+      "directedTo": "FIRST"
     },
     {
       "first": "student7",
       "second": "student11",
-      "weight": 77
+      "weight": 77,
+      "directedTo": "FIRST"
     },
     {
       "first": "student11",
       "second": "student16",
-      "weight": 77
+      "weight": 77,
+      "directedTo": "FIRST"
     },
     {
       "first": "student13",
       "second": "student15",
-      "weight": 71
+      "weight": 71,
+      "directedTo": "FIRST"
     },
     {
       "first": "student12",
       "second": "student13",
-      "weight": 73
+      "weight": 73,
+      "directedTo": "FIRST"
     },
     {
       "first": "student12",
       "second": "student15",
-      "weight": 73
+      "weight": 73,
+      "directedTo": "FIRST"
     },
     {
       "first": "student5",
       "second": "student1",
-      "weight": 64
+      "weight": 64,
+      "directedTo": "FIRST"
     },
     {
       "first": "student6",
       "second": "student13",
-      "weight": 66
+      "weight": 66,
+      "directedTo": "FIRST"
     },
     {
       "first": "student6",
       "second": "student12",
-      "weight": 66
+      "weight": 66,
+      "directedTo": "FIRST"
     },
     {
       "first": "student6",
       "second": "student15",
-      "weight": 66
+      "weight": 66,
+      "directedTo": "FIRST"
     },
     {
       "first": "student8",
       "second": "student13",
-      "weight": 58
+      "weight": 58,
+      "directedTo": "FIRST"
     },
     {
       "first": "student8",
       "second": "student15",
-      "weight": 55
+      "weight": 55,
+      "directedTo": "FIRST"
     },
     {
       "first": "student8",
       "second": "student12",
-      "weight": 54
+      "weight": 54,
+      "directedTo": "FIRST"
     },
     {
       "first": "student3",
       "second": "student5",
-      "weight": 51
+      "weight": 51,
+      "directedTo": "FIRST"
     },
     {
       "first": "student5",
       "second": "student18",
-      "weight": 54
+      "weight": 54,
+      "directedTo": "FIRST"
     },
     {
       "first": "student3",
       "second": "student1",
-      "weight": 48
+      "weight": 48,
+      "directedTo": "FIRST"
     },
     {
       "first": "student6",
       "second": "student8",
-      "weight": 53
+      "weight": 53,
+      "directedTo": "FIRST"
     },
     {
       "first": "student14",
       "second": "student16",
-      "weight": 54
+      "weight": 54,
+      "directedTo": "FIRST"
     },
     {
       "first": "student7",
       "second": "student14",
-      "weight": 54
+      "weight": 54,
+      "directedTo": "FIRST"
     },
     {
       "first": "student11",
       "second": "student14",
-      "weight": 54
+      "weight": 54,
+      "directedTo": "FIRST"
     },
     {
       "first": "student18",
       "second": "student1",
-      "weight": 42
+      "weight": 42,
+      "directedTo": "FIRST"
     },
     {
       "first": "student4",
       "second": "student10",
-      "weight": 41
+      "weight": 41,
+      "directedTo": "FIRST"
     },
     {
       "first": "student3",
       "second": "student14",
-      "weight": 36
+      "weight": 36,
+      "directedTo": "FIRST"
     },
     {
       "first": "student5",
       "second": "student14",
-      "weight": 37
+      "weight": 37,
+      "directedTo": "FIRST"
     },
     {
       "first": "student5",
       "second": "student16",
-      "weight": 37
+      "weight": 37,
+      "directedTo": "FIRST"
     },
     {
       "first": "student5",
       "second": "student7",
-      "weight": 37
+      "weight": 37,
+      "directedTo": "FIRST"
     },
     {
       "first": "student5",
       "second": "student11",
-      "weight": 37
+      "weight": 37,
+      "directedTo": "FIRST"
     },
     {
       "first": "student14",
       "second": "student18",
-      "weight": 34
+      "weight": 34,
+      "directedTo": "FIRST"
     },
     {
       "first": "student14",
       "second": "student1",
-      "weight": 31
+      "weight": 31,
+      "directedTo": "FIRST"
     },
     {
       "first": "student16",
       "second": "student1",
-      "weight": 32
+      "weight": 32,
+      "directedTo": "FIRST"
     },
     {
       "first": "student7",
       "second": "student1",
-      "weight": 32
+      "weight": 32,
+      "directedTo": "FIRST"
     },
     {
       "first": "student11",
       "second": "student1",
-      "weight": 32
+      "weight": 32,
+      "directedTo": "FIRST"
     },
     {
       "first": "student13",
       "second": "student2",
-      "weight": 28
+      "weight": 28,
+      "directedTo": "FIRST"
     },
     {
       "first": "student12",
       "second": "student2",
-      "weight": 29
+      "weight": 29,
+      "directedTo": "FIRST"
     },
     {
       "first": "student15",
       "second": "student2",
-      "weight": 30
+      "weight": 30,
+      "directedTo": "FIRST"
     },
     {
       "first": "student6",
       "second": "student2",
-      "weight": 29
+      "weight": 29,
+      "directedTo": "FIRST"
     },
     {
       "first": "student13",
       "second": "student14",
-      "weight": 28
+      "weight": 28,
+      "directedTo": "FIRST"
     },
     {
       "first": "student12",
       "second": "student14",
-      "weight": 29
+      "weight": 29,
+      "directedTo": "FIRST"
     },
     {
       "first": "student14",
       "second": "student15",
-      "weight": 29
+      "weight": 29,
+      "directedTo": "FIRST"
     },
     {
       "first": "student6",
       "second": "student14",
-      "weight": 28
+      "weight": 28,
+      "directedTo": "FIRST"
     },
     {
       "first": "student17",
       "second": "student18",
-      "weight": 27
+      "weight": 27,
+      "directedTo": "FIRST"
     },
     {
       "first": "student3",
       "second": "student17",
-      "weight": 24
+      "weight": 24,
+      "directedTo": "FIRST"
     },
     {
       "first": "student8",
       "second": "student16",
-      "weight": 25
+      "weight": 25,
+      "directedTo": "FIRST"
     },
     {
       "first": "student8",
       "second": "student11",
-      "weight": 25
+      "weight": 25,
+      "directedTo": "FIRST"
     },
     {
       "first": "student7",
       "second": "student8",
-      "weight": 28
+      "weight": 28,
+      "directedTo": "FIRST"
     },
     {
       "first": "student3",
       "second": "student16",
-      "weight": 22
+      "weight": 22,
+      "directedTo": "FIRST"
     },
     {
       "first": "student3",
       "second": "student7",
-      "weight": 22
+      "weight": 22,
+      "directedTo": "FIRST"
     },
     {
       "first": "student3",
       "second": "student11",
-      "weight": 22
+      "weight": 22,
+      "directedTo": "FIRST"
     },
     {
       "first": "student16",
       "second": "student18",
-      "weight": 26
+      "weight": 26,
+      "directedTo": "FIRST"
     },
     {
       "first": "student7",
       "second": "student18",
-      "weight": 26
+      "weight": 26,
+      "directedTo": "FIRST"
     },
     {
       "first": "student11",
       "second": "student18",
-      "weight": 26
+      "weight": 26,
+      "directedTo": "FIRST"
     },
     {
       "first": "student8",
       "second": "student2",
-      "weight": 23
+      "weight": 23,
+      "directedTo": "FIRST"
     },
     {
       "first": "student4",
       "second": "student8",
-      "weight": 22
+      "weight": 22,
+      "directedTo": "FIRST"
     },
     {
       "first": "student4",
       "second": "student13",
-      "weight": 21
+      "weight": 21,
+      "directedTo": "FIRST"
     },
     {
       "first": "student4",
       "second": "student12",
-      "weight": 21
+      "weight": 21,
+      "directedTo": "FIRST"
     },
     {
       "first": "student4",
       "second": "student15",
-      "weight": 21
+      "weight": 21,
+      "directedTo": "FIRST"
     },
     {
       "first": "student4",
       "second": "student6",
-      "weight": 21
+      "weight": 21,
+      "directedTo": "FIRST"
     },
     {
       "first": "student4",
       "second": "student16",
-      "weight": 19
+      "weight": 19,
+      "directedTo": "FIRST"
     },
     {
       "first": "student4",
       "second": "student7",
-      "weight": 19
+      "weight": 19,
+      "directedTo": "FIRST"
     },
     {
       "first": "student4",
       "second": "student11",
-      "weight": 19
+      "weight": 19,
+      "directedTo": "FIRST"
     },
     {
       "first": "student7",
       "second": "student10",
-      "weight": 21
+      "weight": 21,
+      "directedTo": "FIRST"
     },
     {
       "first": "student10",
       "second": "student16",
-      "weight": 20
+      "weight": 20,
+      "directedTo": "SECOND"
     },
     {
       "first": "student10",
       "second": "student11",
-      "weight": 20
+      "weight": 20,
+      "directedTo": "SECOND"
     },
     {
       "first": "student4",
       "second": "student2",
-      "weight": 19
+      "weight": 19,
+      "directedTo": "SECOND"
     },
     {
       "first": "student8",
       "second": "student14",
-      "weight": 17
+      "weight": 17,
+      "directedTo": "SECOND"
     },
     {
       "first": "student17",
       "second": "student1",
-      "weight": 17
+      "weight": 17,
+      "directedTo": "SECOND"
     },
     {
       "first": "student3",
       "second": "student13",
-      "weight": 15
+      "weight": 15,
+      "directedTo": "SECOND"
     },
     {
       "first": "student3",
       "second": "student12",
-      "weight": 15
+      "weight": 15,
+      "directedTo": "SECOND"
     },
     {
       "first": "student3",
       "second": "student15",
-      "weight": 15
+      "weight": 15,
+      "directedTo": "SECOND"
     },
     {
       "first": "student3",
       "second": "student6",
-      "weight": 15
+      "weight": 15,
+      "directedTo": "SECOND"
     },
     {
       "first": "student14",
       "second": "student17",
-      "weight": 18
+      "weight": 18,
+      "directedTo": "SECOND"
     },
     {
       "first": "student16",
       "second": "student17",
-      "weight": 18
+      "weight": 18,
+      "directedTo": "SECOND"
     },
     {
       "first": "student7",
       "second": "student17",
-      "weight": 18
+      "weight": 18,
+      "directedTo": "SECOND"
     },
     {
       "first": "student5",
       "second": "student17",
-      "weight": 16
+      "weight": 16,
+      "directedTo": "SECOND"
     },
     {
       "first": "student11",
       "second": "student17",
-      "weight": 18
+      "weight": 18,
+      "directedTo": "SECOND"
     },
     {
       "first": "student5",
       "second": "student8",
-      "weight": 15
+      "weight": 15,
+      "directedTo": "SECOND"
     },
     {
       "first": "student8",
       "second": "student17",
-      "weight": 14
+      "weight": 14,
+      "directedTo": "SECOND"
     },
     {
       "first": "student4",
       "second": "student14",
-      "weight": 14
+      "weight": 14,
+      "directedTo": "SECOND"
     },
     {
       "first": "student10",
       "second": "student14",
-      "weight": 14
+      "weight": 14,
+      "directedTo": "SECOND"
     },
     {
       "first": "student10",
       "second": "student17",
-      "weight": 11
+      "weight": 11,
+      "directedTo": "SECOND"
     },
     {
       "first": "student1",
       "second": "student2",
-      "weight": 10
+      "weight": 10,
+      "directedTo": "SECOND"
     },
     {
       "first": "student5",
       "second": "student2",
-      "weight": 10
+      "weight": 10,
+      "directedTo": "SECOND"
     },
     {
       "first": "student17",
       "second": "student2",
-      "weight": 10
+      "weight": 10,
+      "directedTo": "SECOND"
     },
     {
       "first": "student13",
       "second": "student18",
-      "weight": 9
+      "weight": 9,
+      "directedTo": "SECOND"
     },
     {
       "first": "student12",
       "second": "student18",
-      "weight": 10
+      "weight": 10,
+      "directedTo": "SECOND"
     },
     {
       "first": "student15",
       "second": "student18",
-      "weight": 10
+      "weight": 10,
+      "directedTo": "SECOND"
     },
     {
       "first": "student6",
       "second": "student18",
-      "weight": 9
+      "weight": 9,
+      "directedTo": "SECOND"
     },
     {
       "first": "student13",
       "second": "student16",
-      "weight": 9
+      "weight": 9,
+      "directedTo": "SECOND"
     },
     {
       "first": "student12",
       "second": "student16",
-      "weight": 9
+      "weight": 9,
+      "directedTo": "SECOND"
     },
     {
       "first": "student15",
       "second": "student16",
-      "weight": 9
+      "weight": 9,
+      "directedTo": "SECOND"
     },
     {
       "first": "student7",
       "second": "student13",
-      "weight": 9
+      "weight": 9,
+      "directedTo": "SECOND"
     },
     {
       "first": "student7",
       "second": "student12",
-      "weight": 9
+      "weight": 9,
+      "directedTo": "SECOND"
     },
     {
       "first": "student7",
       "second": "student15",
-      "weight": 9
+      "weight": 9,
+      "directedTo": "SECOND"
     },
     {
       "first": "student6",
       "second": "student16",
-      "weight": 9
+      "weight": 9,
+      "directedTo": "SECOND"
     },
     {
       "first": "student6",
       "second": "student7",
-      "weight": 9
+      "weight": 9,
+      "directedTo": "SECOND"
     },
     {
       "first": "student6",
       "second": "student11",
-      "weight": 9
+      "weight": 9,
+      "directedTo": "SECOND"
     },
     {
       "first": "student11",
       "second": "student13",
-      "weight": 9
+      "weight": 9,
+      "directedTo": "SECOND"
     },
     {
       "first": "student11",
       "second": "student12",
-      "weight": 9
+      "weight": 9,
+      "directedTo": "SECOND"
     },
     {
       "first": "student11",
       "second": "student15",
-      "weight": 9
+      "weight": 9,
+      "directedTo": "SECOND"
     },
     {
       "first": "student3",
       "second": "student2",
-      "weight": 7
+      "weight": 7,
+      "directedTo": "SECOND"
     },
     {
       "first": "student18",
       "second": "student2",
-      "weight": 7
+      "weight": 7,
+      "directedTo": "SECOND"
     },
     {
       "first": "student13",
       "second": "student17",
-      "weight": 8
+      "weight": 8,
+      "directedTo": "SECOND"
     },
     {
       "first": "student12",
       "second": "student17",
-      "weight": 8
+      "weight": 8,
+      "directedTo": "SECOND"
     },
     {
       "first": "student4",
       "second": "student17",
-      "weight": 7
+      "weight": 7,
+      "directedTo": "SECOND"
     },
     {
       "first": "student15",
       "second": "student17",
-      "weight": 8
+      "weight": 8,
+      "directedTo": "SECOND"
     },
     {
       "first": "student6",
       "second": "student17",
-      "weight": 8
+      "weight": 8,
+      "directedTo": "SECOND"
     },
     {
       "first": "student3",
       "second": "student8",
-      "weight": 6
+      "weight": 6,
+      "directedTo": "SECOND"
     },
     {
       "first": "student8",
       "second": "student18",
-      "weight": 7
+      "weight": 7,
+      "directedTo": "SECOND"
     },
     {
       "first": "student8",
       "second": "student10",
-      "weight": 7
+      "weight": 7,
+      "directedTo": "SECOND"
     },
     {
       "first": "student8",
       "second": "student1",
-      "weight": 7
+      "weight": 7,
+      "directedTo": "SECOND"
     }
   ]
 }

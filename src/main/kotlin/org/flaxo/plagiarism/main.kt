@@ -128,6 +128,19 @@ private fun showGraphVisualizationTool(graphUrl: String?) {
                 +"collapsing"
             }
         }
+        div(classes = "input-group") {
+            div {
+                +"Direction"
+            }
+            label {
+                input(classes = "threshold-range") {
+                    name = "graphDirectionEnabledInput"
+                    type = InputType.checkBox
+                    checked = true
+                }
+                +"enabled"
+            }
+        }
         div(classes = "links") {
             a(href = "https://github.com/tcibinan/flaxo") {
                 img(src = "https://img.shields.io/badge/from_flaxo-with_♥-blue.svg", alt = "rom_flaxo with_♥")

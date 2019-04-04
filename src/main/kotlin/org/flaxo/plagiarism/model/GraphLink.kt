@@ -29,5 +29,10 @@ class GraphLink(
          *
          * *The higher weight the closer nodes are.*
          */
-        val weight: Int
+        val weight: Int,
+
+        /**
+         * Direction of the link
+         */
+        val directedTo: Direction
 )
