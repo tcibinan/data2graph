@@ -23,10 +23,18 @@ import org.flaxo.plagiarism.normalization.DefaultNormalization
 import org.flaxo.plagiarism.normalization.DistancesNormalization
 import org.flaxo.plagiarism.normalization.MaximumNormalization
 import org.flaxo.plagiarism.support.ColorScheme
+import org.flaxo.plagiarism.support.Mouse
 import org.flaxo.plagiarism.support.all
+import org.flaxo.plagiarism.support.distanceTo
+import org.flaxo.plagiarism.support.inCoordinatesOf
 import org.flaxo.plagiarism.support.inputById
 import org.flaxo.plagiarism.support.inputBySelector
 import org.flaxo.plagiarism.support.spanById
+import org.w3c.dom.Element
+import org.w3c.dom.HTMLCanvasElement
+import org.w3c.dom.events.MouseEvent
+import kotlin.browser.document
+import kotlin.browser.window
 import kotlin.math.sqrt
 import kotlin.random.Random
 
@@ -53,7 +61,7 @@ fun Graph.toViz(canvasWidth: Double = 800.0, canvasHeight: Double = 500.0): Viz 
     repeat(links.size) {
         line {
             with(style) {
-                stroke = ColorScheme.link
+                stroke = ColorScheme.Link.default
                 strokeWidth = 3.0
             }
         }
@@ -62,7 +70,7 @@ fun Graph.toViz(canvasWidth: Double = 800.0, canvasHeight: Double = 500.0): Viz 
     repeat(links.size * 2) {
         line {
             with(style) {
-                stroke = ColorScheme.link
+                stroke = ColorScheme.Link.default
                 strokeWidth = 3.0
             }
         }
@@ -73,8 +81,8 @@ fun Graph.toViz(canvasWidth: Double = 800.0, canvasHeight: Double = 500.0): Viz 
         circle {
             radius = 5.0
             with(style) {
-                fill = ColorScheme.node
-                stroke = ColorScheme.nodeStroke
+                fill = ColorScheme.Node.default
+                stroke = ColorScheme.Node.stroke
                 strokeWidth = 2.0
             }
         }
@@ -89,7 +97,7 @@ fun Graph.toViz(canvasWidth: Double = 800.0, canvasHeight: Double = 500.0): Viz 
         }
     }
 
-    // Creating force simulation that lasts forever.
+    // Creating a force simulation that lasts forever.
     val simulation = forceSimulation {
         alphaDecay = 0.0
         nodes = this@toViz.nodes.mapIndexed { index, _ ->
@@ -97,29 +105,36 @@ fun Graph.toViz(canvasWidth: Double = 800.0, canvasHeight: Double = 500.0): Viz 
         }
     }
 
-    // Adding basic forces.
+    // Creating basic forces.
     simulation.addForce("forceNBody", forceNBody())
     simulation.addForce("forceCenter", forceCenter(Point(width / 2, height / 2)))
 
-    onFrame { refreshGraph(nodes, links, simulation) }
-}
-
-/**
- * Converts the string to a normalization strategy.
- *
- * @param threshold Plagiarism weight threshold.
- */
-private fun String.toNormalization(threshold: Double): DistancesNormalization =
-        when (this) {
-            "max" -> MaximumNormalization()
-            "collapsing" -> CollapsingNormalization(threshold)
-            else -> DefaultNormalization()
+    val mouse = Mouse()
+    val canvas = document.getElementById("main-canvas") as? HTMLCanvasElement
+    canvas?.onmousemove = { e ->
+        val event = e as? MouseEvent
+        val target = event?.target as? Element
+        val clientRect = target?.getBoundingClientRect()
+        if (event != null && clientRect != null) {
+            mouse.point = Point(
+                    x = event.clientX - clientRect.left,
+                    y = event.clientY - clientRect.top
+            )
         }
+    }
+    canvas?.onclick = {
+        mouse.clicked = true
+        42
+    }
+    onFrame {
+        refreshGraph(nodes, links, simulation, mouse)
+    }
+}
 
 /**
  * Refreshes the visualization according to the simulation changes and the user's input.
  */
-fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation: ForceSimulation) {
+fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation: ForceSimulation, mouse: Mouse) {
     val threshold = inputById("plagiarismMatchThreshold").value.toInt()
     spanById("plagiarismMatchThresholdMonitor").innerHTML = threshold.toString()
     val directionEnabled = inputBySelector("input[name=\"graphDirectionEnabledInput\"]").checked
@@ -131,7 +146,7 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
     // Changing links color according to the specified plagiarism weight threshold.
     linkLines.forEachIndexed { index, line ->
         with(line.style) {
-            stroke = if (links[index].weight > threshold) ColorScheme.link else ColorScheme.blank
+            stroke = if (links[index].weight > threshold) ColorScheme.Link.default else ColorScheme.blank
         }
     }
 
@@ -140,14 +155,14 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
         arrowLinesPair.first.also { line ->
             with(line.style) {
                 stroke = if (links[index].weight > threshold && directionEnabled)
-                    ColorScheme.link
+                    ColorScheme.Link.default
                 else ColorScheme.blank
             }
         }
         arrowLinesPair.second.also { line ->
             with(line.style) {
                 stroke = if (links[index].weight > threshold && directionEnabled)
-                    ColorScheme.link
+                    ColorScheme.Link.default
                 else ColorScheme.blank
             }
         }
@@ -163,7 +178,7 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
                 text.y = circle.y
             }
 
-    // Changing link positions according to the simulation state.
+    // Updating link coordinates according to the simulation state.
     linkLines.zip(arrowLines).forEachIndexed { index, (line, arrowLines) ->
         val link = links[index]
         val source = link.first
@@ -180,6 +195,31 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
         // Set position of the arrow lines for the line
         if (directionEnabled && link.directedTo != null) setArrowLinesPosition(line, arrowLines, link.directedTo)
     }
+
+    var anyCrossings = false
+    // Updating lines selected by the mouse.
+    all<Line>().forEachIndexed { index, line ->
+        val distanceToLine = line distanceTo mouse.point
+        if (line.style.stroke != ColorScheme.blank
+                && distanceToLine  < 10
+                && mouse.point inCoordinatesOf line) {
+            anyCrossings = true
+            with(line.style) {
+                stroke = ColorScheme.Link.selected
+                strokeWidth = 6.0
+            }
+            if (mouse.clicked) {
+                val graphLink = links[index]
+                if (graphLink.url != null) {
+                    window.location.href = graphLink.url
+                }
+                mouse.clicked = false
+            }
+        } else {
+            line.style.strokeWidth = 3.0
+        }
+    }
+    document.body?.style?.cursor = if (anyCrossings) "pointer" else "auto"
 
     // Retrieving set scale, shift and normalization.
     val scale = inputById("plagiarismGraphScale").value.toDouble()
@@ -253,3 +293,16 @@ fun calculateRelativeX(x: Double, y: Double, sin: Double, cos: Double, x0: Doubl
  */
 fun calculateRelativeY(x: Double, y: Double, sin: Double, cos: Double, y0: Double) =
         x * sin + y * cos + y0
+
+/**
+ * Converts the string to a normalization strategy.
+ *
+ * @param threshold Plagiarism weight threshold.
+ */
+// TODO 04.04.19: Inline the function.
+private fun String.toNormalization(threshold: Double): DistancesNormalization =
+        when (this) {
+            "max" -> MaximumNormalization()
+            "collapsing" -> CollapsingNormalization(threshold)
+            else -> DefaultNormalization()
+        }
