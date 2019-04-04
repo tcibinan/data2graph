@@ -9,12 +9,18 @@ class Mouse(
         /**
          * Point where user cursor is.
          */
-        var point: Point = Point(),
+        var point: Point = Point()
+) {
 
-        /**
-         * Mouse clicked state.
-         *
-         * It should be set in the reverse state while handling the click.
-         */
-        var clicked: Boolean = false
-)
+    /**
+     * Mouse latest click.
+     *
+     * It resets click every time it is requested.
+     */
+    var click: Click? = null
+        get() {
+            val storedClick = field
+            if (storedClick != null) field = null
+            return storedClick
+        }
+}
