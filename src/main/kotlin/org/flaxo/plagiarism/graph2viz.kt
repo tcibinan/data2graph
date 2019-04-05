@@ -23,25 +23,23 @@ import org.flaxo.plagiarism.normalization.DefaultNormalization
 import org.flaxo.plagiarism.normalization.DistancesNormalization
 import org.flaxo.plagiarism.normalization.MaximumNormalization
 import org.flaxo.plagiarism.support.ColorScheme
+import org.flaxo.plagiarism.support.all
 import org.flaxo.plagiarism.support.inputById
 import org.flaxo.plagiarism.support.inputBySelector
 import org.flaxo.plagiarism.support.spanById
 import kotlin.math.sqrt
 import kotlin.random.Random
 
+private const val defaultArrowLengthX = 30.0
+private const val defaultArrowLengthY = 8.0
+private const val maxArrowLengthProportionX = 2
+private const val maxArrowLengthProportionY = 3
+
 /**
  * Converts the graph to a data2viz's visualization.
  */
 fun Graph.toViz(canvasWidth: Int = 800, canvasHeight: Int = 500): Viz =
         toViz(canvasWidth.toDouble(), canvasHeight.toDouble())
-
-private const val defaultArrowLengthX = 30.0
-private const val defaultArrowLengthY = 8.0
-
-private val lines = mutableListOf<Line>()
-private val arrowLines = mutableListOf<List<Line>>()
-private val circles = mutableListOf<Circle>()
-private val texts = mutableListOf<Text>()
 
 /**
  * Converts the graph to a data2viz's visualization.
@@ -53,39 +51,34 @@ fun Graph.toViz(canvasWidth: Double = 800.0, canvasHeight: Double = 500.0): Viz 
 
     // Creating a line for each link.
     repeat(links.size) {
-        lines.add(line {
+        line {
             with(style) {
                 stroke = ColorScheme.link
                 strokeWidth = 3.0
             }
-        })
+        }
     }
-
-    // Creating two lines for an arrow per each line.
-    repeat(links.size) {
-        val arrowLine = mutableListOf<Line>()
-        arrowLines += arrowLine
-        repeat(2) {
-            arrowLine += line {
-                with(style) {
-                    stroke = ColorScheme.text
-                    strokeWidth = 3.0
-                }
+    // Creating two lines for each arrow.
+    repeat(links.size * 2) {
+        line {
+            with(style) {
+                stroke = ColorScheme.link
+                strokeWidth = 3.0
             }
         }
     }
 
     // Creating a circle with associated text for each node.
     nodes.forEach { node ->
-        circles.add(circle {
+        circle {
             radius = 5.0
             with(style) {
                 fill = ColorScheme.node
                 stroke = ColorScheme.nodeStroke
                 strokeWidth = 2.0
             }
-        })
-        texts.add(text {
+        }
+        text {
             textContent = node.name
             with(style) {
                 fill = ColorScheme.text
@@ -93,7 +86,7 @@ fun Graph.toViz(canvasWidth: Double = 800.0, canvasHeight: Double = 500.0): Viz 
                 anchor = TextAnchor.START
                 baseline = TextAlignmentBaseline.MIDDLE
             }
-        })
+        }
     }
 
     // Creating force simulation that lasts forever.
@@ -131,16 +124,27 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
     spanById("plagiarismMatchThresholdMonitor").innerHTML = threshold.toString()
     val directionEnabled = inputBySelector("input[name=\"graphDirectionEnabledInput\"]").checked
 
+    val allLines = all<Line>()
+    val linkLines = allLines.subList(0, allLines.size / 3)
+    val arrowLines = allLines.subList(linkLines.size, allLines.size).chunked(2).map { it -> it[0] to it[1] }
+
     // Changing links color according to the specified plagiarism weight threshold.
-    lines.forEachIndexed { index, line ->
+    linkLines.forEachIndexed { index, line ->
         with(line.style) {
             stroke = if (links[index].weight > threshold) ColorScheme.link else ColorScheme.blank
         }
     }
 
     // Changing arrows color according to the specified plagiarism weight threshold.
-    arrowLines.forEachIndexed { index, arrowLinesChunk ->
-        arrowLinesChunk.forEach { line ->
+    arrowLines.forEachIndexed { index, arrowLinesPair ->
+        arrowLinesPair.first.also { line ->
+            with(line.style) {
+                stroke = if (links[index].weight > threshold && directionEnabled)
+                    ColorScheme.link
+                else ColorScheme.blank
+            }
+        }
+        arrowLinesPair.second.also { line ->
             with(line.style) {
                 stroke = if (links[index].weight > threshold && directionEnabled)
                     ColorScheme.link
@@ -150,7 +154,7 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
     }
 
     // Moving all circles and texts according to the simulation state.
-    circles.zip(texts)
+    all<Circle>().zip(all<Text>())
             .forEachIndexed { index, (circle, text) ->
                 val forceNode = simulation.nodes[index]
                 circle.x = forceNode.x
@@ -160,7 +164,7 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
             }
 
     // Changing link positions according to the simulation state.
-    lines.zip(arrowLines).forEachIndexed { index, (line, arrowLines) ->
+    linkLines.zip(arrowLines).forEachIndexed { index, (line, arrowLines) ->
         val link = links[index]
         val source = link.first
         val target = link.second
@@ -174,7 +178,7 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
         line.y2 = targetNode.y
 
         // Set position of the arrow lines for the line
-        if (directionEnabled) setArrowLinesPosition(line, arrowLines, link.directedTo)
+        if (directionEnabled && link.directedTo != null) setArrowLinesPosition(line, arrowLines, link.directedTo)
     }
 
     // Retrieving set scale, shift and normalization.
@@ -194,41 +198,48 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
 /**
  * Define coordinates of the [arrowLines]
  */
-fun setArrowLinesPosition(line: Line, arrowLines: List<Line>, direction: Direction) {
+fun setArrowLinesPosition(line: Line, arrowLines: Pair<Line, Line>, direction: Direction) {
     val dx = line.run { x2 - x1 }
     val dy = line.run { y2 - y1 }
     val len = sqrt(dx * dx + dy * dy)
     val sin = dy / len
     val cos = dx / len
 
+    // Find actual length of the arrow lines, reduce it if the line is too small
+    val adaptedArrowLengthX = if (defaultArrowLengthX > len / maxArrowLengthProportionX)
+        len / maxArrowLengthProportionX else defaultArrowLengthX
+    val adaptedArrowLengthY = if (defaultArrowLengthY > len / maxArrowLengthProportionY)
+        len / maxArrowLengthProportionY else defaultArrowLengthY
+
     val arrowLengthX: Double
     val arrowLengthY: Double
     val arrowHeadX: Double
     val arrowHeadY: Double
 
+    // Define the coordinates of the arrow lines
     when (direction) {
         Direction.FIRST -> {
-            arrowLengthX = defaultArrowLengthX
-            arrowLengthY = defaultArrowLengthY
+            arrowLengthX = adaptedArrowLengthX
+            arrowLengthY = adaptedArrowLengthY
             arrowHeadX = line.x1
             arrowHeadY = line.y1
         }
         Direction.SECOND -> {
-            arrowLengthX = -defaultArrowLengthX
-            arrowLengthY = defaultArrowLengthY
+            arrowLengthX = -adaptedArrowLengthX
+            arrowLengthY = adaptedArrowLengthY
             arrowHeadX = line.x2
             arrowHeadY = line.y2
         }
     }
 
-    arrowLines[0].x1 = calculateRelativeX(arrowLengthX, arrowLengthY, sin, cos, arrowHeadX)
-    arrowLines[0].y1 = calculateRelativeY(arrowLengthX, arrowLengthY, sin, cos, arrowHeadY)
-    arrowLines[0].x2 = arrowHeadX
-    arrowLines[0].y2 = arrowHeadY
-    arrowLines[1].x1 = calculateRelativeX(arrowLengthX, -arrowLengthY, sin, cos, arrowHeadX)
-    arrowLines[1].y1 = calculateRelativeY(arrowLengthX, -arrowLengthY, sin, cos, arrowHeadY)
-    arrowLines[1].x2 = arrowHeadX
-    arrowLines[1].y2 = arrowHeadY
+    arrowLines.first.x1 = calculateRelativeX(arrowLengthX, arrowLengthY, sin, cos, arrowHeadX)
+    arrowLines.first.y1 = calculateRelativeY(arrowLengthX, arrowLengthY, sin, cos, arrowHeadY)
+    arrowLines.first.x2 = arrowHeadX
+    arrowLines.first.y2 = arrowHeadY
+    arrowLines.second.x1 = calculateRelativeX(arrowLengthX, -arrowLengthY, sin, cos, arrowHeadX)
+    arrowLines.second.y1 = calculateRelativeY(arrowLengthX, -arrowLengthY, sin, cos, arrowHeadY)
+    arrowLines.second.x2 = arrowHeadX
+    arrowLines.second.y2 = arrowHeadY
 }
 
 /**

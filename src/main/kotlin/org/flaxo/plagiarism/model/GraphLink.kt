@@ -1,6 +1,8 @@
 package org.flaxo.plagiarism.model
 
+import kotlinx.serialization.Optional
 import kotlinx.serialization.Serializable
+import org.flaxo.plagiarism.support.DirectionSerializer
 
 /**
  * Graph link.
@@ -34,5 +36,7 @@ class GraphLink(
         /**
          * Direction of the link
          */
-        val directedTo: Direction
+        @Optional
+        @Serializable(with = DirectionSerializer::class)
+        val directedTo: Direction? = null
 )
