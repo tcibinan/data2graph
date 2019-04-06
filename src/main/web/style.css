@@ -7,6 +7,8 @@ body {
 }
 
 .controls {
+    display: flex;
+    flex-direction: column;
     min-width: 300px;
     padding: 10px;
     border-right: 1px solid lightgray;
@@ -21,7 +23,7 @@ body {
 }
 
 .controls .links {
-    margin-top: 100%;
+    margin-top: auto;
 }
 
 .controls .links a {
