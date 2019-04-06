@@ -73,7 +73,7 @@ class Arrow(val line: Line, val tails: Pair<Line, Line>, val link: GraphLink) {
                 arrowLengthX = adaptedArrowLengthX
                 arrowLengthY = adaptedArrowLengthY
                 arrowHeadX = line.x1
-                arrowHeadY = this.line.y1
+                arrowHeadY = line.y1
             }
             Direction.SECOND -> {
                 arrowLengthX = -adaptedArrowLengthX
