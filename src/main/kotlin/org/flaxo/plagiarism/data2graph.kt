@@ -120,21 +120,17 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
     spanById("plagiarismMatchThresholdMonitor").innerHTML = threshold.toString()
     val directionEnabled = inputById("graphDirectionEnabledInput").checked
 
-    val arrows = getArrows(links)
     val dots = getDots(nodes)
+    val arrows = getArrows(links)
 
-    arrows.forEach { arrow ->
-        if (arrow.link.weight > threshold) arrow.show(directionEnabled) else arrow.hide()
-    }
-
-    // Moving all circles and texts according to the simulation state.
+    // Updating dots according to the simulation state.
     dots.forEachIndexed { index, dot ->
         val forceNode = simulation.nodes[index]
         dot.update(forceNode)
         dot.show()
     }
 
-    // Updating link coordinates according to the simulation state.
+    // Updating arrows according to the simulation state.
     arrows.forEach { arrow ->
         val source = arrow.link.first
         val target = arrow.link.second
@@ -142,8 +138,8 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
         val targetNodeIndex = nodes.indexOfFirst { it.name == target }
         val sourceNode = simulation.nodes[sourceNodeIndex]
         val targetNode = simulation.nodes[targetNodeIndex]
-
-        arrow.update(sourceNode, targetNode, directionEnabled)
+        arrow.update(sourceNode to targetNode, directionEnabled)
+        if (arrow.link.weight > threshold) arrow.show(directionEnabled) else arrow.hide()
     }
 
     // Resetting the cursor.

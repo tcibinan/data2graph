@@ -9,41 +9,30 @@ import org.flaxo.plagiarism.support.Configuration
 import kotlin.math.sqrt
 
 /**
- * Arrow abstraction.
+ * Arrow visual element.
  *
  * It consists of [line] and two [tails] and has an associated graph [link].
  *
  * If no direction is provided or requested than it is just a line.
  */
-class Arrow(val line: LineNode, val tails: Pair<LineNode, LineNode>, val link: GraphLink) {
+class Arrow(val line: LineNode, val tails: Pair<LineNode, LineNode>, val link: GraphLink)
+    : VisualElement<Pair<ForceNode, ForceNode>> {
 
-    /**
-     * Shows all required components of the arrow.
-     */
-    fun show(directed: Boolean) {
+    override fun show(directed: Boolean) {
         components(directed).forEach { it.stroke = ColorScheme.Link.default }
         if (!directed) tails.toList().forEach { it.stroke = ColorScheme.blank }
     }
 
-    /**
-     * Hides all components of the arrow.
-     */
-    fun hide() = components(withTails = true).forEach { it.stroke = ColorScheme.blank }
+    override fun hide(directed: Boolean) = components(withTails = true).forEach { it.stroke = ColorScheme.blank }
 
-    /**
-     * Highlights all required components of the arrow.
-     */
-    fun select(directed: Boolean) = components(directed).forEach { it.stroke = ColorScheme.Link.selected }
+    override fun select(directed: Boolean) = components(directed).forEach { it.stroke = ColorScheme.Link.selected }
 
-    /**
-     * Updates coordinates of all required components of the arrow.
-     */
-    fun update(sourceNode: ForceNode, targetNode: ForceNode, directed: Boolean) {
+    override fun update(coordinatesSource: Pair<ForceNode, ForceNode>, directed: Boolean) {
         with(line) {
-            x1 = sourceNode.x
-            y1 = sourceNode.y
-            x2 = targetNode.x
-            y2 = targetNode.y
+            x1 = coordinatesSource.first.x
+            y1 = coordinatesSource.first.y
+            x2 = coordinatesSource.second.x
+            y2 = coordinatesSource.second.y
         }
 
         if (directed && link.directedTo != null) updateTails(link.directedTo)
@@ -97,7 +86,6 @@ class Arrow(val line: LineNode, val tails: Pair<LineNode, LineNode>, val link: G
             y2 = arrowHeadY
         }
     }
-
 
     /**
      * Calculate relative x coordinate by the position of [x0]
