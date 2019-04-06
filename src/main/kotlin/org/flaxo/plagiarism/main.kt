@@ -60,7 +60,7 @@ private fun showGraphVisualizationTool(graphUrl: String?) {
         }
         div(classes = "input-group") {
             div {
-                +"Threshold "
+                +"Shift "
                 span {
                     id = "nodeDistancesShiftMonitor"
                     +"0"
@@ -72,14 +72,14 @@ private fun showGraphVisualizationTool(graphUrl: String?) {
                     id = "nodeDistancesShift"
                     type = InputType.range
                     min = "0"
-                    max = "200"
-                    value = "50"
+                    max = "400"
+                    value = "200"
                 }
             }
         }
         div(classes = "input-group") {
             div {
-                +"Threshold "
+                +"Scale "
                 span {
                     id = "plagiarismGraphScaleMonitor"
                     +"300"
@@ -92,7 +92,7 @@ private fun showGraphVisualizationTool(graphUrl: String?) {
                     type = InputType.range
                     min = "0"
                     max = "500"
-                    value = "300"
+                    value = "200"
                 }
             }
         }
