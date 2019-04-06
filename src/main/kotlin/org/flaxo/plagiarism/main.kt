@@ -173,7 +173,7 @@ private fun showGraphVisualizationTool(graphUrl: String?) {
 }
 
 private fun showPlaceholder() {
-    val demoUrl = window.location.origin + "/?$GRAPH_URL_PARAMETER=data.json"
+    val demoUrl = window.location.href + "?$GRAPH_URL_PARAMETER=data.json"
     val placeholder = document.create.div {
         style = "width: 100%; " +
                 "display: flex; " +
