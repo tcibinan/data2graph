@@ -21,19 +21,19 @@ class Arrow(val line: Line, val tails: Pair<Line, Line>, val link: GraphLink) {
      * Shows all required components of the arrow.
      */
     fun show(directed: Boolean) {
-        visibleComponents(directed).forEach { it.style.stroke = ColorScheme.Link.default }
+        components(directed).forEach { it.style.stroke = ColorScheme.Link.default }
         if (!directed) tails.toList().forEach { it.style.stroke = ColorScheme.blank }
     }
 
     /**
      * Hides all components of the arrow.
      */
-    fun hide() = visibleComponents(true).forEach { it.style.stroke = ColorScheme.blank }
+    fun hide() = components(withTails = true).forEach { it.style.stroke = ColorScheme.blank }
 
     /**
      * Highlights all required components of the arrow.
      */
-    fun select(directed: Boolean) = visibleComponents(directed).forEach { it.style.stroke = ColorScheme.Link.selected }
+    fun select(directed: Boolean) = components(directed).forEach { it.style.stroke = ColorScheme.Link.selected }
 
     /**
      * Updates coordinates of all required components of the arrow.
@@ -112,5 +112,5 @@ class Arrow(val line: Line, val tails: Pair<Line, Line>, val link: GraphLink) {
             x * sin + y * cos + y0
 
 
-    private fun visibleComponents(directed: Boolean) = if (directed) listOf(line) + tails.toList() else listOf(line)
+    private fun components(withTails: Boolean) = if (withTails) listOf(line) + tails.toList() else listOf(line)
 }
