@@ -14,10 +14,10 @@ import io.data2viz.viz.TextAnchor
 import io.data2viz.viz.Viz
 import io.data2viz.viz.viz
 import org.flaxo.plagiarism.force.GraphForce
-import org.flaxo.plagiarism.model.Direction
 import org.flaxo.plagiarism.model.Graph
 import org.flaxo.plagiarism.model.GraphLink
 import org.flaxo.plagiarism.model.GraphNode
+import org.flaxo.plagiarism.element.Arrow
 import org.flaxo.plagiarism.normalization.CollapsingNormalization
 import org.flaxo.plagiarism.normalization.DefaultNormalization
 import org.flaxo.plagiarism.normalization.MaximumNormalization
@@ -35,13 +35,7 @@ import org.flaxo.plagiarism.support.spanById
 import org.w3c.dom.HTMLCanvasElement
 import kotlin.browser.document
 import kotlin.browser.window
-import kotlin.math.sqrt
 import kotlin.random.Random
-
-private const val defaultArrowLengthX = 30.0
-private const val defaultArrowLengthY = 8.0
-private const val maxArrowLengthProportionX = 2
-private const val maxArrowLengthProportionY = 3
 
 /**
  * Converts the graph to a data2viz's visualization.
@@ -127,36 +121,12 @@ fun Graph.toViz(canvasWidth: Double = Configuration.Canvas.width.toDouble(),
 fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation: ForceSimulation, mouse: Mouse) {
     val threshold = inputById("plagiarismMatchThreshold").value.toInt()
     spanById("plagiarismMatchThresholdMonitor").innerHTML = threshold.toString()
-    val directionEnabled = inputBySelector("input[name=\"graphDirectionEnabledInput\"]").checked
+    val directionEnabled = inputById("graphDirectionEnabledInput").checked
 
-    val allLines = all<Line>()
-    val linkLines = allLines.subList(0, allLines.size / 3)
-    val arrowLines = allLines.subList(linkLines.size, allLines.size).chunked(2).map { it -> it[0] to it[1] }
+    val arrows = getArrows(links)
 
-    // Changing links color according to the specified plagiarism weight threshold.
-    linkLines.forEachIndexed { index, line ->
-        with(line.style) {
-            stroke = if (links[index].weight > threshold) ColorScheme.Link.default else ColorScheme.blank
-            strokeWidth = Configuration.Link.strokeWidth
-        }
-    }
-
-    // Changing arrows color according to the specified plagiarism weight threshold.
-    arrowLines.forEachIndexed { index, arrowLinesPair ->
-        arrowLinesPair.first.also { line ->
-            with(line.style) {
-                stroke = if (links[index].weight > threshold && directionEnabled)
-                    ColorScheme.Link.default
-                else ColorScheme.blank
-            }
-        }
-        arrowLinesPair.second.also { line ->
-            with(line.style) {
-                stroke = if (links[index].weight > threshold && directionEnabled)
-                    ColorScheme.Link.default
-                else ColorScheme.blank
-            }
-        }
+    arrows.forEach { arrow ->
+        if (arrow.link.weight > threshold) arrow.show(directionEnabled) else arrow.hide()
     }
 
     // Moving all circles and texts according to the simulation state.
@@ -170,49 +140,38 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
             }
 
     // Updating link coordinates according to the simulation state.
-    linkLines.zip(arrowLines).forEachIndexed { index, (line, arrowLines) ->
-        val link = links[index]
-        val source = link.first
-        val target = link.second
+    arrows.forEach { arrow ->
+        val source = arrow.link.first
+        val target = arrow.link.second
         val sourceNodeIndex = nodes.indexOfFirst { it.name == source }
         val targetNodeIndex = nodes.indexOfFirst { it.name == target }
         val sourceNode = simulation.nodes[sourceNodeIndex]
         val targetNode = simulation.nodes[targetNodeIndex]
-        line.x1 = sourceNode.x
-        line.y1 = sourceNode.y
-        line.x2 = targetNode.x
-        line.y2 = targetNode.y
 
-        // Set position of the arrow lines for the line
-        if (directionEnabled && link.directedTo != null) setArrowLinesPosition(line, arrowLines, link.directedTo)
+        arrow.update(sourceNode, targetNode, directionEnabled)
     }
 
     // Resetting the cursor.
     document.body?.style?.cursor = "auto"
 
-    // Finding the closest line link pair.
-    val closestLineLinkPair = all<Line>()
-            .mapIndexed { index, line -> line to links[index] }
-            .filter { (line, link) ->
-                link.weight > threshold
-                        && line distanceTo mouse.point < Configuration.Mouse.triggerDistance
-                        && mouse.point inCoordinatesOf line
+    // Finding the closest arrow to mouse.
+    val closestArrow = arrows
+            .filter { arrow ->
+                arrow.link.weight > threshold
+                        && arrow.line distanceTo mouse.point < Configuration.Mouse.triggerDistance
+                        && mouse.point inCoordinatesOf arrow.line
             }
-            .minBy { (line, _) -> line distanceTo mouse.point }
+            .minBy { arrow -> arrow.line distanceTo mouse.point }
 
-    // Highlighting the closest line and handling line clicks.
-    if (closestLineLinkPair != null) {
-        val (line, link) = closestLineLinkPair
-        with(line.style) {
-            stroke = ColorScheme.Link.selected
-            strokeWidth = Configuration.Link.selectedStrokeWidth
-        }
+    // Highlighting the closest arrow and handling the clicks.
+    if (closestArrow != null) {
+        closestArrow.select(directionEnabled)
         val clickPoint = mouse.click?.point
         if (clickPoint != null
-                && line distanceTo clickPoint < Configuration.Mouse.triggerDistance
-                && clickPoint inCoordinatesOf line) {
-            if (link.url != null) {
-                window.location.href = link.url
+                && closestArrow.line distanceTo clickPoint < Configuration.Mouse.triggerDistance
+                && clickPoint inCoordinatesOf closestArrow.line) {
+            if (closestArrow.link.url != null) {
+                window.location.href = closestArrow.link.url
             }
         }
         document.body?.style?.cursor = "pointer"
@@ -235,61 +194,9 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
     simulation.addForce("Graph force", graphForce)
 }
 
-/**
- * Define coordinates of the [arrowLines]
- */
-fun setArrowLinesPosition(line: Line, arrowLines: Pair<Line, Line>, direction: Direction) {
-    val dx = line.run { x2 - x1 }
-    val dy = line.run { y2 - y1 }
-    val len = sqrt(dx * dx + dy * dy)
-    val sin = dy / len
-    val cos = dx / len
-
-    // Find actual length of the arrow lines, reduce it if the line is too small
-    val adaptedArrowLengthX = if (defaultArrowLengthX > len / maxArrowLengthProportionX)
-        len / maxArrowLengthProportionX else defaultArrowLengthX
-    val adaptedArrowLengthY = if (defaultArrowLengthY > len / maxArrowLengthProportionY)
-        len / maxArrowLengthProportionY else defaultArrowLengthY
-
-    val arrowLengthX: Double
-    val arrowLengthY: Double
-    val arrowHeadX: Double
-    val arrowHeadY: Double
-
-    // Define the coordinates of the arrow lines
-    when (direction) {
-        Direction.FIRST -> {
-            arrowLengthX = adaptedArrowLengthX
-            arrowLengthY = adaptedArrowLengthY
-            arrowHeadX = line.x1
-            arrowHeadY = line.y1
-        }
-        Direction.SECOND -> {
-            arrowLengthX = -adaptedArrowLengthX
-            arrowLengthY = adaptedArrowLengthY
-            arrowHeadX = line.x2
-            arrowHeadY = line.y2
-        }
-    }
-
-    arrowLines.first.x1 = calculateRelativeX(arrowLengthX, arrowLengthY, sin, cos, arrowHeadX)
-    arrowLines.first.y1 = calculateRelativeY(arrowLengthX, arrowLengthY, sin, cos, arrowHeadY)
-    arrowLines.first.x2 = arrowHeadX
-    arrowLines.first.y2 = arrowHeadY
-    arrowLines.second.x1 = calculateRelativeX(arrowLengthX, -arrowLengthY, sin, cos, arrowHeadX)
-    arrowLines.second.y1 = calculateRelativeY(arrowLengthX, -arrowLengthY, sin, cos, arrowHeadY)
-    arrowLines.second.x2 = arrowHeadX
-    arrowLines.second.y2 = arrowHeadY
+private fun Viz.getArrows(links: List<GraphLink>): List<Arrow> {
+    val allLines = all<Line>()
+    val linkLines = allLines.subList(0, allLines.size / 3)
+    val arrowLines = allLines.subList(linkLines.size, allLines.size).chunked(2).map { it[0] to it[1] }
+    return linkLines.zip(arrowLines).mapIndexed { index, (line, arrows) -> Arrow(line, arrows, links[index]) }
 }
-
-/**
- * Calculate relative x coordinate by the position of [x0]
- */
-fun calculateRelativeX(x: Double, y: Double, sin: Double, cos: Double, x0: Double) =
-        x * cos - y * sin + x0
-
-/**
- * Calculate relative y coordinate by the position of [y0]
- */
-fun calculateRelativeY(x: Double, y: Double, sin: Double, cos: Double, y0: Double) =
-        x * sin + y * cos + y0

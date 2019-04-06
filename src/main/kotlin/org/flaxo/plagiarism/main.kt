@@ -73,7 +73,7 @@ private fun showGraphVisualizationTool(graphUrl: String?) {
                     type = InputType.range
                     min = "0"
                     max = "200"
-                    value = "0"
+                    value = "50"
                 }
             }
         }
@@ -114,7 +114,6 @@ private fun showGraphVisualizationTool(graphUrl: String?) {
                     name = "distanceNormalizationInput"
                     type = InputType.radio
                     value = "max"
-                    checked = true
                 }
                 +"max"
             }
@@ -123,7 +122,6 @@ private fun showGraphVisualizationTool(graphUrl: String?) {
                     name = "distanceNormalizationInput"
                     type = InputType.radio
                     value = "collapsing"
-                    checked = true
                 }
                 +"collapsing"
             }
@@ -134,9 +132,9 @@ private fun showGraphVisualizationTool(graphUrl: String?) {
             }
             label {
                 input(classes = "threshold-range") {
-                    name = "graphDirectionEnabledInput"
+                    id = "graphDirectionEnabledInput"
                     type = InputType.checkBox
-                    checked = true
+                    checked = false
                 }
                 +"enabled"
             }

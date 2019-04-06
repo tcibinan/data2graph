@@ -18,7 +18,10 @@ object Configuration {
 
     object Link {
         const val strokeWidth = 3.0
-        const val selectedStrokeWidth = 6.0
+        const val tailLengthX = 20.0
+        const val tailLengthY = 5.0
+        const val maxTailLengthProportionX = 2
+        const val maxTailLengthProportionY = 3
     }
 
     object Mouse {

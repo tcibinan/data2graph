@@ -19,6 +19,6 @@ object ColorScheme {
 
     object Link {
         val default = colors.lightgray.withAlpha(0.5F)
-        val selected = Color().withRed(204).withGreen(255).withBlue(102).withAlpha(0.5F)
+        val selected = Color().withRed(204).withGreen(255).withBlue(102)
     }
 }
