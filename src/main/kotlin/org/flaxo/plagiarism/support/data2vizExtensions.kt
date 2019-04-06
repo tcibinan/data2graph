@@ -1,6 +1,7 @@
 package org.flaxo.plagiarism.support
 
 import io.data2viz.geom.Point
+import io.data2viz.viz.CircleNode
 import io.data2viz.viz.LineNode
 import io.data2viz.viz.Node
 import io.data2viz.viz.Viz
@@ -31,6 +32,17 @@ infix fun LineNode.distanceTo(m: Point): Double {
     val b = l2.x - l1.x
     val c = l1.x * l2.y - l1.y * l2.x
     return abs(a * m.x + b * m.y + c) / (sqrt(a.pow(2) + b.pow(2)))
+}
+
+/**
+ * Calculates a distance from the node to the given point [m].
+ *
+ * Ignores the circle radius.
+ */
+infix fun CircleNode.distanceTo(m: Point): Double {
+    val dx = abs(x - m.x)
+    val dy = abs(y - m.y)
+    return sqrt(dx.pow(2) + dy.pow(2))
 }
 
 /**

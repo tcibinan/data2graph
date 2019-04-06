@@ -1,58 +1,76 @@
 {
   "nodes": [
     {
-      "name": "student1"
+      "name": "student1",
+      "url": "demo.html#student1_node_details"
     },
     {
-      "name": "student2"
+      "name": "student2",
+      "url": "demo.html#student2_node_details"
     },
     {
-      "name": "student3"
+      "name": "student3",
+      "url": "demo.html#student3_node_details"
     },
     {
-      "name": "student4"
+      "name": "student4",
+      "url": "demo.html#student4_node_details"
     },
     {
-      "name": "student5"
+      "name": "student5",
+      "url": "demo.html#student5_node_details"
     },
     {
-      "name": "student6"
+      "name": "student6",
+      "url": "demo.html#student6_node_details"
     },
     {
-      "name": "student7"
+      "name": "student7",
+      "url": "demo.html#student7_node_details"
     },
     {
-      "name": "student8"
+      "name": "student8",
+      "url": "demo.html#student8_node_details"
     },
     {
-      "name": "student9"
+      "name": "student9",
+      "url": "demo.html#student9_node_details"
     },
     {
-      "name": "student10"
+      "name": "student10",
+      "url": "demo.html#student10_node_details"
     },
     {
-      "name": "student11"
+      "name": "student11",
+      "url": "demo.html#student11_node_details"
     },
     {
-      "name": "student12"
+      "name": "student12",
+      "url": "demo.html#student12_node_details"
     },
     {
-      "name": "student13"
+      "name": "student13",
+      "url": "demo.html#student13_node_details"
     },
     {
-      "name": "student14"
+      "name": "student14",
+      "url": "demo.html#student14_node_details"
     },
     {
-      "name": "student15"
+      "name": "student15",
+      "url": "demo.html#student15_node_details"
     },
     {
-      "name": "student16"
+      "name": "student16",
+      "url": "demo.html#student16_node_details"
     },
     {
-      "name": "student17"
+      "name": "student17",
+      "url": "demo.html#student17_node_details"
     },
     {
-      "name": "student18"
+      "name": "student18",
+      "url": "demo.html#student18_node_details"
     }
   ],
   "links": [
@@ -61,777 +79,777 @@
       "second": "student18",
       "weight": 75,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student3_student18_link_details"
     },
     {
       "first": "student7",
       "second": "student16",
       "weight": 77,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student7_student16_link_details"
     },
     {
       "first": "student7",
       "second": "student11",
       "weight": 77,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student7_student11_link_details"
     },
     {
       "first": "student11",
       "second": "student16",
       "weight": 77,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student11_student16_link_details"
     },
     {
       "first": "student13",
       "second": "student15",
       "weight": 71,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student13_student15_link_details"
     },
     {
       "first": "student12",
       "second": "student13",
       "weight": 73,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student12_student13_link_details"
     },
     {
       "first": "student12",
       "second": "student15",
       "weight": 73,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student12_student15_link_details"
     },
     {
       "first": "student5",
       "second": "student1",
       "weight": 64,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student5_student1_link_details"
     },
     {
       "first": "student6",
       "second": "student13",
       "weight": 66,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student6_student13_link_details"
     },
     {
       "first": "student6",
       "second": "student12",
       "weight": 66,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student6_student12_link_details"
     },
     {
       "first": "student6",
       "second": "student15",
       "weight": 66,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student6_student15_link_details"
     },
     {
       "first": "student8",
       "second": "student13",
       "weight": 58,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student8_student13_link_details"
     },
     {
       "first": "student8",
       "second": "student15",
       "weight": 55,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student8_student15_link_details"
     },
     {
       "first": "student8",
       "second": "student12",
       "weight": 54,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student8_student12_link_details"
     },
     {
       "first": "student3",
       "second": "student5",
       "weight": 51,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student3_student5_link_details"
     },
     {
       "first": "student5",
       "second": "student18",
       "weight": 54,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student5_student18_link_details"
     },
     {
       "first": "student3",
       "second": "student1",
       "weight": 48,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student3_student1_link_details"
     },
     {
       "first": "student6",
       "second": "student8",
       "weight": 53,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student6_student8_link_details"
     },
     {
       "first": "student14",
       "second": "student16",
       "weight": 54,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student14_student16_link_details"
     },
     {
       "first": "student7",
       "second": "student14",
       "weight": 54,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student7_student14_link_details"
     },
     {
       "first": "student11",
       "second": "student14",
       "weight": 54,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student11_student14_link_details"
     },
     {
       "first": "student18",
       "second": "student1",
       "weight": 42,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student18_student1_link_details"
     },
     {
       "first": "student4",
       "second": "student10",
       "weight": 41,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student4_student10_link_details"
     },
     {
       "first": "student3",
       "second": "student14",
       "weight": 36,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student3_student14_link_details"
     },
     {
       "first": "student5",
       "second": "student14",
       "weight": 37,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student5_student14_link_details"
     },
     {
       "first": "student5",
       "second": "student16",
       "weight": 37,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student5_student16_link_details"
     },
     {
       "first": "student5",
       "second": "student7",
       "weight": 37,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student5_student7_link_details"
     },
     {
       "first": "student5",
       "second": "student11",
       "weight": 37,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student5_student11_link_details"
     },
     {
       "first": "student14",
       "second": "student18",
       "weight": 34,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student14_student18_link_details"
     },
     {
       "first": "student14",
       "second": "student1",
       "weight": 31,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student14_student1_link_details"
     },
     {
       "first": "student16",
       "second": "student1",
       "weight": 32,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student16_student1_link_details"
     },
     {
       "first": "student7",
       "second": "student1",
       "weight": 32,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student7_student1_link_details"
     },
     {
       "first": "student11",
       "second": "student1",
       "weight": 32,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student11_student1_link_details"
     },
     {
       "first": "student13",
       "second": "student2",
       "weight": 28,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student13_student2_link_details"
     },
     {
       "first": "student12",
       "second": "student2",
       "weight": 29,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student12_student2_link_details"
     },
     {
       "first": "student15",
       "second": "student2",
       "weight": 30,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student15_student2_link_details"
     },
     {
       "first": "student6",
       "second": "student2",
       "weight": 29,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student6_student2_link_details"
     },
     {
       "first": "student13",
       "second": "student14",
       "weight": 28,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student13_student14_link_details"
     },
     {
       "first": "student12",
       "second": "student14",
       "weight": 29,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student12_student14_link_details"
     },
     {
       "first": "student14",
       "second": "student15",
       "weight": 29,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student14_student15_link_details"
     },
     {
       "first": "student6",
       "second": "student14",
       "weight": 28,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student6_student14_link_details"
     },
     {
       "first": "student17",
       "second": "student18",
       "weight": 27,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student17_student18_link_details"
     },
     {
       "first": "student3",
       "second": "student17",
       "weight": 24,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student3_student17_link_details"
     },
     {
       "first": "student8",
       "second": "student16",
       "weight": 25,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student8_student16_link_details"
     },
     {
       "first": "student8",
       "second": "student11",
       "weight": 25,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student8_student11_link_details"
     },
     {
       "first": "student7",
       "second": "student8",
       "weight": 28,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student7_student8_link_details"
     },
     {
       "first": "student3",
       "second": "student16",
       "weight": 22,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student3_student16_link_details"
     },
     {
       "first": "student3",
       "second": "student7",
       "weight": 22,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student3_student7_link_details"
     },
     {
       "first": "student3",
       "second": "student11",
       "weight": 22,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student3_student11_link_details"
     },
     {
       "first": "student16",
       "second": "student18",
       "weight": 26,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student16_student18_link_details"
     },
     {
       "first": "student7",
       "second": "student18",
       "weight": 26,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student7_student18_link_details"
     },
     {
       "first": "student11",
       "second": "student18",
       "weight": 26,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student11_student18_link_details"
     },
     {
       "first": "student8",
       "second": "student2",
       "weight": 23,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student8_student2_link_details"
     },
     {
       "first": "student4",
       "second": "student8",
       "weight": 22,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student4_student8_link_details"
     },
     {
       "first": "student4",
       "second": "student13",
       "weight": 21,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student4_student13_link_details"
     },
     {
       "first": "student4",
       "second": "student12",
       "weight": 21,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student4_student12_link_details"
     },
     {
       "first": "student4",
       "second": "student15",
       "weight": 21,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student4_student15_link_details"
     },
     {
       "first": "student4",
       "second": "student6",
       "weight": 21,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student4_student6_link_details"
     },
     {
       "first": "student4",
       "second": "student16",
       "weight": 19,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student4_student16_link_details"
     },
     {
       "first": "student4",
       "second": "student7",
       "weight": 19,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student4_student7_link_details"
     },
     {
       "first": "student4",
       "second": "student11",
       "weight": 19,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student4_student11_link_details"
     },
     {
       "first": "student7",
       "second": "student10",
       "weight": 21,
       "directedTo": "first",
-      "url": "data.json"
+      "url": "demo.html#student7_student10_link_details"
     },
     {
       "first": "student10",
       "second": "student16",
       "weight": 20,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student10_student16_link_details"
     },
     {
       "first": "student10",
       "second": "student11",
       "weight": 20,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student10_student11_link_details"
     },
     {
       "first": "student4",
       "second": "student2",
       "weight": 19,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student4_student2_link_details"
     },
     {
       "first": "student8",
       "second": "student14",
       "weight": 17,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student8_student14_link_details"
     },
     {
       "first": "student17",
       "second": "student1",
       "weight": 17,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student17_student1_link_details"
     },
     {
       "first": "student3",
       "second": "student13",
       "weight": 15,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student3_student13_link_details"
     },
     {
       "first": "student3",
       "second": "student12",
       "weight": 15,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student3_student12_link_details"
     },
     {
       "first": "student3",
       "second": "student15",
       "weight": 15,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student3_student15_link_details"
     },
     {
       "first": "student3",
       "second": "student6",
       "weight": 15,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student3_student6_link_details"
     },
     {
       "first": "student14",
       "second": "student17",
       "weight": 18,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student14_student17_link_details"
     },
     {
       "first": "student16",
       "second": "student17",
       "weight": 18,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student16_student17_link_details"
     },
     {
       "first": "student7",
       "second": "student17",
       "weight": 18,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student7_student17_link_details"
     },
     {
       "first": "student5",
       "second": "student17",
       "weight": 16,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student5_student17_link_details"
     },
     {
       "first": "student11",
       "second": "student17",
       "weight": 18,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student11_student17_link_details"
     },
     {
       "first": "student5",
       "second": "student8",
       "weight": 15,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student5_student8_link_details"
     },
     {
       "first": "student8",
       "second": "student17",
       "weight": 14,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student8_student17_link_details"
     },
     {
       "first": "student4",
       "second": "student14",
       "weight": 14,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student4_student14_link_details"
     },
     {
       "first": "student10",
       "second": "student14",
       "weight": 14,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student10_student14_link_details"
     },
     {
       "first": "student10",
       "second": "student17",
       "weight": 11,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student10_student17_link_details"
     },
     {
       "first": "student1",
       "second": "student2",
       "weight": 10,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student1_student2_link_details"
     },
     {
       "first": "student5",
       "second": "student2",
       "weight": 10,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student5_student2_link_details"
     },
     {
       "first": "student17",
       "second": "student2",
       "weight": 10,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student17_student2_link_details"
     },
     {
       "first": "student13",
       "second": "student18",
       "weight": 9,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student13_student18_link_details"
     },
     {
       "first": "student12",
       "second": "student18",
       "weight": 10,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student12_student18_link_details"
     },
     {
       "first": "student15",
       "second": "student18",
       "weight": 10,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student15_student18_link_details"
     },
     {
       "first": "student6",
       "second": "student18",
       "weight": 9,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student6_student18_link_details"
     },
     {
       "first": "student13",
       "second": "student16",
       "weight": 9,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student13_student16_link_details"
     },
     {
       "first": "student12",
       "second": "student16",
       "weight": 9,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student12_student16_link_details"
     },
     {
       "first": "student15",
       "second": "student16",
       "weight": 9,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student15_student16_link_details"
     },
     {
       "first": "student7",
       "second": "student13",
       "weight": 9,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student7_student13_link_details"
     },
     {
       "first": "student7",
       "second": "student12",
       "weight": 9,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student7_student12_link_details"
     },
     {
       "first": "student7",
       "second": "student15",
       "weight": 9,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student7_student15_link_details"
     },
     {
       "first": "student6",
       "second": "student16",
       "weight": 9,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student6_student16_link_details"
     },
     {
       "first": "student6",
       "second": "student7",
       "weight": 9,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student6_student7_link_details"
     },
     {
       "first": "student6",
       "second": "student11",
       "weight": 9,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student6_student11_link_details"
     },
     {
       "first": "student11",
       "second": "student13",
       "weight": 9,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student11_student13_link_details"
     },
     {
       "first": "student11",
       "second": "student12",
       "weight": 9,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student11_student12_link_details"
     },
     {
       "first": "student11",
       "second": "student15",
       "weight": 9,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student11_student15_link_details"
     },
     {
       "first": "student3",
       "second": "student2",
       "weight": 7,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student3_student2_link_details"
     },
     {
       "first": "student18",
       "second": "student2",
       "weight": 7,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student18_student2_link_details"
     },
     {
       "first": "student13",
       "second": "student17",
       "weight": 8,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student13_student17_link_details"
     },
     {
       "first": "student12",
       "second": "student17",
       "weight": 8,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student12_student17_link_details"
     },
     {
       "first": "student4",
       "second": "student17",
       "weight": 7,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student4_student17_link_details"
     },
     {
       "first": "student15",
       "second": "student17",
       "weight": 8,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student15_student17_link_details"
     },
     {
       "first": "student6",
       "second": "student17",
       "weight": 8,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student6_student17_link_details"
     },
     {
       "first": "student3",
       "second": "student8",
       "weight": 6,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student3_student8_link_details"
     },
     {
       "first": "student8",
       "second": "student18",
       "weight": 7,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student8_student18_link_details"
     },
     {
       "first": "student8",
       "second": "student10",
       "weight": 7,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student8_student10_link_details"
     },
     {
       "first": "student8",
       "second": "student1",
       "weight": 7,
       "directedTo": "second",
-      "url": "data.json"
+      "url": "demo.html#student8_student1_link_details"
     }
   ]
 }

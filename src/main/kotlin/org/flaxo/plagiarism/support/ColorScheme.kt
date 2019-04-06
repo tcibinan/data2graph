@@ -14,10 +14,11 @@ object ColorScheme {
     object Node {
         val default = Colors.rgb(31, 119, 180)
         val stroke = Colors.Web.white
+        val selected = Colors.Web.black
     }
 
     object Link {
         val default = Colors.Web.lightgray.withAlpha(70.pct)
-        val selected = Colors.rgb(204, 255, 102)
+        val selected = Colors.Web.black
     }
 }

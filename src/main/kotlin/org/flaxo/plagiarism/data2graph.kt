@@ -20,6 +20,7 @@ import org.flaxo.plagiarism.model.Graph
 import org.flaxo.plagiarism.model.GraphLink
 import org.flaxo.plagiarism.model.GraphNode
 import org.flaxo.plagiarism.element.Arrow
+import org.flaxo.plagiarism.element.Dot
 import org.flaxo.plagiarism.normalization.CollapsingNormalization
 import org.flaxo.plagiarism.normalization.DefaultNormalization
 import org.flaxo.plagiarism.normalization.MaximumNormalization
@@ -84,7 +85,7 @@ fun Graph.toViz(canvasWidth: Double = Configuration.Canvas.width.toDouble(),
             fontSize = Configuration.Text.size
             fontWeight = FontWeight.NORMAL
             fontFamily = FontFamily.MONOSPACE
-            fill = ColorScheme.text
+            textColor = ColorScheme.text
             hAlign = TextHAlign.MIDDLE
             vAlign = TextVAlign.BASELINE
         }
@@ -120,20 +121,18 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
     val directionEnabled = inputById("graphDirectionEnabledInput").checked
 
     val arrows = getArrows(links)
+    val dots = getDots(nodes)
 
     arrows.forEach { arrow ->
         if (arrow.link.weight > threshold) arrow.show(directionEnabled) else arrow.hide()
     }
 
     // Moving all circles and texts according to the simulation state.
-    all<CircleNode>().zip(all<TextNode>())
-            .forEachIndexed { index, (circle, text) ->
-                val forceNode = simulation.nodes[index]
-                circle.x = forceNode.x
-                circle.y = forceNode.y
-                text.x = circle.x
-                text.y = circle.y - Configuration.Text.margin
-            }
+    dots.forEachIndexed { index, dot ->
+        val forceNode = simulation.nodes[index]
+        dot.update(forceNode)
+        dot.show()
+    }
 
     // Updating link coordinates according to the simulation state.
     arrows.forEach { arrow ->
@@ -150,7 +149,7 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
     // Resetting the cursor.
     document.body?.style?.cursor = "auto"
 
-    // Finding the closest arrow to mouse.
+    // Finding the closest arrow to mouse pointer.
     val closestArrow = arrows
             .filter { arrow ->
                 arrow.link.weight > threshold
@@ -159,10 +158,24 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
             }
             .minBy { arrow -> arrow.line distanceTo mouse.point }
 
-    // Highlighting the closest arrow and handling the clicks.
-    if (closestArrow != null) {
+    // Finding the closest dot to mouse pointer.
+    val closestDot = dots
+            .filter { dot -> dot.circle distanceTo mouse.point < Configuration.Mouse.triggerDistance }
+            .minBy { dot -> dot.circle distanceTo mouse.point }
+
+    val clickPoint = mouse.click?.point
+    // Highlighting the closest circle or arrow and handling a mouse click.
+    if (closestDot != null) {
+        closestDot.select()
+        if (clickPoint != null
+                && closestDot.circle distanceTo clickPoint < Configuration.Mouse.triggerDistance) {
+            if (closestDot.node.url != null) {
+                window.location.href = closestDot.node.url
+            }
+        }
+        document.body?.style?.cursor = "pointer"
+    } else if (closestArrow != null) {
         closestArrow.select(directionEnabled)
-        val clickPoint = mouse.click?.point
         if (clickPoint != null
                 && closestArrow.line distanceTo clickPoint < Configuration.Mouse.triggerDistance
                 && clickPoint inCoordinatesOf closestArrow.line) {
@@ -193,6 +206,16 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
 private fun Viz.getArrows(links: List<GraphLink>): List<Arrow> {
     val allLines = all<LineNode>()
     val linkLines = allLines.subList(0, allLines.size / 3)
-    val arrowLines = allLines.subList(linkLines.size, allLines.size).chunked(2).map { it[0] to it[1] }
-    return linkLines.zip(arrowLines).mapIndexed { index, (line, arrows) -> Arrow(line, arrows, links[index]) }
+    val arrowLines = allLines.subList(linkLines.size, allLines.size)
+            .chunked(2)
+            .map { it[0] to it[1] }
+    return linkLines.zip(arrowLines)
+            .mapIndexed { index, (line, arrows) -> Arrow(line, arrows, links[index]) }
+}
+
+private fun Viz.getDots(nodes: List<GraphNode>): List<Dot> {
+    val allCircles = all<CircleNode>()
+    val allTexts = all<TextNode>()
+    return allCircles.zip(allTexts)
+            .mapIndexed { index, (circle, text) -> Dot(circle, text, nodes[index]) }
 }

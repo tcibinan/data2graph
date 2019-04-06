@@ -1,5 +1,6 @@
 package org.flaxo.plagiarism.model
 
+import kotlinx.serialization.Optional
 import kotlinx.serialization.Serializable
 
 /**
@@ -13,5 +14,11 @@ class GraphNode(
         /**
          * Node unique name.
          */
-        val name: String
+        val name: String,
+
+        /**
+         * Node details web URL.
+         */
+        @Optional
+        val url: String? = null
 )
