@@ -1,24 +1,23 @@
 package org.flaxo.plagiarism.support
 
-import io.data2viz.color.Color
-import io.data2viz.color.colors
+import io.data2viz.color.Colors
+import io.data2viz.math.pct
 
 /**
  * Graph default color scheme.
  */
 object ColorScheme {
 
-    val blank = Color(alpha = 0.0F)
-
-    val text = colors.black
+    val blank = Colors.Web.black.withAlpha(0.pct)
+    val text = Colors.Web.black
 
     object Node {
-        val default = Color().withRed(31).withGreen(119).withBlue(180)
-        val stroke = colors.white
+        val default = Colors.rgb(31, 119, 180)
+        val stroke = Colors.Web.white
     }
 
     object Link {
-        val default = colors.lightgray.withAlpha(0.5F)
-        val selected = Color().withRed(204).withGreen(255).withBlue(102)
+        val default = Colors.Web.lightgray.withAlpha(70.pct)
+        val selected = Colors.rgb(204, 255, 102)
     }
 }

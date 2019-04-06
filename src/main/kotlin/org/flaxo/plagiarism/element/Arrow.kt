@@ -1,7 +1,7 @@
 package org.flaxo.plagiarism.element
 
 import io.data2viz.force.ForceNode
-import io.data2viz.viz.Line
+import io.data2viz.viz.LineNode
 import org.flaxo.plagiarism.model.Direction
 import org.flaxo.plagiarism.model.GraphLink
 import org.flaxo.plagiarism.support.ColorScheme
@@ -15,25 +15,25 @@ import kotlin.math.sqrt
  *
  * If no direction is provided or requested than it is just a line.
  */
-class Arrow(val line: Line, val tails: Pair<Line, Line>, val link: GraphLink) {
+class Arrow(val line: LineNode, val tails: Pair<LineNode, LineNode>, val link: GraphLink) {
 
     /**
      * Shows all required components of the arrow.
      */
     fun show(directed: Boolean) {
-        components(directed).forEach { it.style.stroke = ColorScheme.Link.default }
-        if (!directed) tails.toList().forEach { it.style.stroke = ColorScheme.blank }
+        components(directed).forEach { it.stroke = ColorScheme.Link.default }
+        if (!directed) tails.toList().forEach { it.stroke = ColorScheme.blank }
     }
 
     /**
      * Hides all components of the arrow.
      */
-    fun hide() = components(withTails = true).forEach { it.style.stroke = ColorScheme.blank }
+    fun hide() = components(withTails = true).forEach { it.stroke = ColorScheme.blank }
 
     /**
      * Highlights all required components of the arrow.
      */
-    fun select(directed: Boolean) = components(directed).forEach { it.style.stroke = ColorScheme.Link.selected }
+    fun select(directed: Boolean) = components(directed).forEach { it.stroke = ColorScheme.Link.selected }
 
     /**
      * Updates coordinates of all required components of the arrow.

@@ -27,8 +27,8 @@ repositories {
 }
 
 dependencies {
-    compile "io.data2viz:d2v-data2viz-common:0.7.0"
-    compile "io.data2viz:d2v-data2viz-js:0.7.0"
+    compile "io.data2viz:d2v-data2viz-common:0.7.1"
+    compile "io.data2viz:d2v-data2viz-js:0.7.1"
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
     compile "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:0.9.0"
     compile "org.jetbrains.kotlinx:kotlinx-html-js:0.6.12"

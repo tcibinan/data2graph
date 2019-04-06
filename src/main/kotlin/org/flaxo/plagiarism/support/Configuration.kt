@@ -27,4 +27,9 @@ object Configuration {
     object Mouse {
         const val triggerDistance = 10
     }
+
+    object Text {
+        const val size = 14.0
+        const val margin = 8
+    }
 }

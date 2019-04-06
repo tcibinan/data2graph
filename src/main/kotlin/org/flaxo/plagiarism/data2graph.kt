@@ -6,11 +6,13 @@ import io.data2viz.force.forceCenter
 import io.data2viz.force.forceNBody
 import io.data2viz.force.forceSimulation
 import io.data2viz.geom.Point
-import io.data2viz.viz.Circle
-import io.data2viz.viz.Line
-import io.data2viz.viz.Text
-import io.data2viz.viz.TextAlignmentBaseline
-import io.data2viz.viz.TextAnchor
+import io.data2viz.viz.CircleNode
+import io.data2viz.viz.FontFamily
+import io.data2viz.viz.FontWeight
+import io.data2viz.viz.LineNode
+import io.data2viz.viz.TextNode
+import io.data2viz.viz.TextVAlign
+import io.data2viz.viz.TextHAlign
 import io.data2viz.viz.Viz
 import io.data2viz.viz.viz
 import org.flaxo.plagiarism.force.GraphForce
@@ -57,19 +59,15 @@ fun Graph.toViz(canvasWidth: Double = Configuration.Canvas.width.toDouble(),
     // Creating a line for each link.
     repeat(links.size) {
         line {
-            with(style) {
-                stroke = ColorScheme.Link.default
-                strokeWidth = Configuration.Link.strokeWidth
-            }
+            stroke = ColorScheme.Link.default
+            strokeWidth = Configuration.Link.strokeWidth
         }
     }
     // Creating two lines for each arrow.
     repeat(links.size * 2) {
         line {
-            with(style) {
-                stroke = ColorScheme.Link.default
-                strokeWidth = 3.0
-            }
+            stroke = ColorScheme.Link.default
+            strokeWidth = Configuration.Link.strokeWidth
         }
     }
 
@@ -77,20 +75,18 @@ fun Graph.toViz(canvasWidth: Double = Configuration.Canvas.width.toDouble(),
     nodes.forEach { node ->
         circle {
             radius = Configuration.Node.radius
-            with(style) {
-                fill = ColorScheme.Node.default
-                stroke = ColorScheme.Node.stroke
-                strokeWidth = Configuration.Node.strokeWidth
-            }
+            fill = ColorScheme.Node.default
+            stroke = ColorScheme.Node.stroke
+            strokeWidth = Configuration.Node.strokeWidth
         }
         text {
             textContent = node.name
-            with(style) {
-                fill = ColorScheme.text
-                stroke = ColorScheme.text
-                anchor = TextAnchor.START
-                baseline = TextAlignmentBaseline.MIDDLE
-            }
+            fontSize = Configuration.Text.size
+            fontWeight = FontWeight.NORMAL
+            fontFamily = FontFamily.MONOSPACE
+            fill = ColorScheme.text
+            hAlign = TextHAlign.MIDDLE
+            vAlign = TextVAlign.BASELINE
         }
     }
 
@@ -110,7 +106,7 @@ fun Graph.toViz(canvasWidth: Double = Configuration.Canvas.width.toDouble(),
     val canvas = document.getElementById("main-canvas") as? HTMLCanvasElement
     canvas?.onmousemove = { e -> e.getPoint()?.also { mouse.point = it } }
     canvas?.onclick = { e -> e.getPoint()?.also { mouse.click = Click(it) } }
-    onFrame {
+    animation {
         refreshGraph(nodes, links, simulation, mouse)
     }
 }
@@ -130,13 +126,13 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
     }
 
     // Moving all circles and texts according to the simulation state.
-    all<Circle>().zip(all<Text>())
+    all<CircleNode>().zip(all<TextNode>())
             .forEachIndexed { index, (circle, text) ->
                 val forceNode = simulation.nodes[index]
                 circle.x = forceNode.x
                 circle.y = forceNode.y
-                text.x = circle.x + 8
-                text.y = circle.y
+                text.x = circle.x
+                text.y = circle.y - Configuration.Text.margin
             }
 
     // Updating link coordinates according to the simulation state.
@@ -195,7 +191,7 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
 }
 
 private fun Viz.getArrows(links: List<GraphLink>): List<Arrow> {
-    val allLines = all<Line>()
+    val allLines = all<LineNode>()
     val linkLines = allLines.subList(0, allLines.size / 3)
     val arrowLines = allLines.subList(linkLines.size, allLines.size).chunked(2).map { it[0] to it[1] }
     return linkLines.zip(arrowLines).mapIndexed { index, (line, arrows) -> Arrow(line, arrows, links[index]) }

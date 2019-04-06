@@ -1,7 +1,7 @@
 package org.flaxo.plagiarism.support
 
 import io.data2viz.geom.Point
-import io.data2viz.viz.Line
+import io.data2viz.viz.LineNode
 import io.data2viz.viz.Node
 import io.data2viz.viz.Viz
 import kotlin.math.abs
@@ -24,7 +24,7 @@ inline fun <reified T : Node> Viz.all(): List<T> =
  *
  * Ignores the line length as if was an infinite line.
  */
-infix fun Line.distanceTo(m: Point): Double {
+infix fun LineNode.distanceTo(m: Point): Double {
     val l1 = Point(x1, y1)
     val l2 = Point(x2, y2)
     val a = l1.y - l2.y
@@ -36,7 +36,7 @@ infix fun Line.distanceTo(m: Point): Double {
 /**
  * Checks if the point lies within the given [line] coordinates.
  */
-infix fun Point.inCoordinatesOf(line: Line): Boolean {
+infix fun Point.inCoordinatesOf(line: LineNode): Boolean {
     val l1 = Point(line.x1, line.y1)
     val l2 = Point(line.x2, line.y2)
     val xMin = min(l1.x, l2.x)
