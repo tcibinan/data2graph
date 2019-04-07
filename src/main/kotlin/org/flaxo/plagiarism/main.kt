@@ -139,6 +139,19 @@ private fun showGraphVisualizationTool(graphUrl: String?) {
                 +"enabled"
             }
         }
+        div(classes = "input-group") {
+            div {
+                +"Hide extra nodes"
+            }
+            label {
+                input(classes = "threshold-range") {
+                    id = "hideExtraNodesEnabledInput"
+                    type = InputType.checkBox
+                    checked = false
+                }
+                +"enabled"
+            }
+        }
         div(classes = "links") {
             a(href = "https://github.com/tcibinan/flaxo") {
                 img(src = "https://img.shields.io/badge/from_flaxo-with_♥-blue.svg", alt = "rom_flaxo with_♥")

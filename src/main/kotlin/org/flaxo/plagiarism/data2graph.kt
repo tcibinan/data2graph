@@ -119,15 +119,21 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
     val threshold = inputById("plagiarismMatchThreshold").value.toInt()
     spanById("plagiarismMatchThresholdMonitor").innerHTML = threshold.toString()
     val directionEnabled = inputById("graphDirectionEnabledInput").checked
+    val showAllNodes = !inputById("hideExtraNodesEnabledInput").checked
 
     val dots = getDots(nodes)
     val arrows = getArrows(links)
+
+    val visibleNames = findVisibleNames(arrows, threshold)
 
     // Updating dots according to the simulation state.
     dots.forEachIndexed { index, dot ->
         val forceNode = simulation.nodes[index]
         dot.update(forceNode)
-        dot.show()
+
+        if (showAllNodes || dot.isVisible(visibleNames))
+            dot.show()
+        else dot.hide()
     }
 
     // Updating arrows according to the simulation state.
@@ -161,7 +167,7 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
 
     val clickPoint = mouse.click?.point
     // Highlighting the closest circle or arrow and handling a mouse click.
-    if (closestDot != null) {
+    if (closestDot != null && (showAllNodes || closestDot.isVisible(visibleNames))) {
         closestDot.select()
         if (clickPoint != null
                 && closestDot.circle distanceTo clickPoint < Configuration.Mouse.triggerDistance) {
@@ -198,6 +204,12 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
     simulation.removeForce("Graph force")
     simulation.addForce("Graph force", graphForce)
 }
+
+private fun findVisibleNames(arrows: List<Arrow>, threshold: Int) =
+        arrows.filter { it.link.weight > threshold }.flatMap { it.link.run { listOf(first, second) } }
+
+private fun Dot.isVisible(visibleNames: Collection<String>) =
+        visibleNames.contains(node.name)
 
 private fun Viz.getArrows(links: List<GraphLink>): List<Arrow> {
     val allLines = all<LineNode>()

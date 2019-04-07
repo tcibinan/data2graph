@@ -18,11 +18,14 @@ class Dot(val circle: CircleNode, val text: TextNode, val node: GraphNode)
 
     override fun show(directed: Boolean) {
         circle.fill = ColorScheme.Node.default
+        circle.stroke = ColorScheme.Node.stroke
         text.fontWeight = FontWeight.NORMAL
+        text.textColor = ColorScheme.text
     }
 
     override fun hide(directed: Boolean) {
         circle.fill = ColorScheme.blank
+        circle.stroke = ColorScheme.blank
         text.textColor = ColorScheme.blank
     }
 
