@@ -119,7 +119,7 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
     val threshold = inputById("plagiarismMatchThreshold").value.toInt()
     spanById("plagiarismMatchThresholdMonitor").innerHTML = threshold.toString()
     val directionEnabled = inputById("graphDirectionEnabledInput").checked
-    val showAllNodes = !inputById("hideExtraNodesEnabledInput").checked
+    val showAllNodes = !inputById("showActiveNodesEnabledInput").checked
 
     val dots = getDots(nodes)
     val arrows = getArrows(links)
@@ -131,9 +131,7 @@ fun Viz.refreshGraph(nodes: List<GraphNode>, links: List<GraphLink>, simulation:
         val forceNode = simulation.nodes[index]
         dot.update(forceNode)
 
-        if (showAllNodes || dot.isVisible(visibleNames))
-            dot.show()
-        else dot.hide()
+        if (showAllNodes || dot.isVisible(visibleNames)) dot.show() else dot.hide()
     }
 
     // Updating arrows according to the simulation state.

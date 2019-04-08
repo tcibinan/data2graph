@@ -141,13 +141,13 @@ private fun showGraphVisualizationTool(graphUrl: String?) {
         }
         div(classes = "input-group") {
             div {
-                +"Hide extra nodes"
+                +"Show active nodes"
             }
             label {
                 input(classes = "threshold-range") {
-                    id = "hideExtraNodesEnabledInput"
+                    id = "showActiveNodesEnabledInput"
                     type = InputType.checkBox
-                    checked = false
+                    checked = true
                 }
                 +"enabled"
             }
