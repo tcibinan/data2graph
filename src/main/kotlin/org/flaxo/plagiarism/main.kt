@@ -16,6 +16,7 @@ import kotlinx.html.span
 import kotlinx.html.style
 import kotlinx.serialization.json.JSON
 import org.flaxo.plagiarism.model.Graph
+import org.flaxo.plagiarism.support.decodeURIComponent
 import org.flaxo.plagiarism.support.elementById
 import org.flaxo.plagiarism.support.retrieveUrlParams
 import org.w3c.dom.HTMLCanvasElement
@@ -29,13 +30,32 @@ fun main() {
     val parameters: Map<String, String> = retrieveUrlParams()
     val graphUrl = parameters[GRAPH_URL_PARAMETER]
     if (graphUrl != null) {
-        showGraphVisualizationTool(graphUrl)
+        val decodedGraphUrl = decodeURIComponent(graphUrl)
+        window.fetch(Request(decodedGraphUrl)).then { response ->
+            if (response.status < 400) {
+                response.text().then {
+                    try {
+                        val graph: Graph = JSON.parse(Graph.serializer(), it)
+                        showGraphVisualizationTool()
+                        elementById<HTMLCanvasElement>("main-canvas").apply {
+                            graph.toViz(scrollWidth, scrollHeight).bindRendererOn(this)
+                        }
+                    } catch (error: Throwable) {
+                        showBadlyFormattedGraphJsonPlaceholder(error)
+                    }
+                }
+            } else {
+                showBadResponseGraphUrlPlaceholder(decodedGraphUrl, response.status)
+            }
+        }.catch { error ->
+            showUnreachableGraphUrlPlaceholder(decodedGraphUrl, error)
+        }
     } else {
-        showPlaceholder()
+        showEmptyGraphUrlPlaceholder()
     }
 }
 
-private fun showGraphVisualizationTool(graphUrl: String?) {
+private fun showGraphVisualizationTool() {
     val controls = document.create.div(classes = "controls") {
         style = "text-transform: uppercase; " +
                 "font-family: monospace; "
@@ -156,12 +176,12 @@ private fun showGraphVisualizationTool(graphUrl: String?) {
             a(href = "https://github.com/tcibinan/flaxo") {
                 img(src = "https://img.shields.io/badge/from_flaxo-with_♥-blue.svg", alt = "rom_flaxo with_♥")
             }
-            a(href = "https://github.com/tcibinan/graph2viz", classes = "github-button") {
+            a(href = "https://github.com/tcibinan/data2graph", classes = "github-button") {
                 attributes.put("data-icon", "octicon-star")
                 attributes.put("aria-label", "Star tcibinan/graph2viz on GitHub")
                 +"Star"
             }
-            a(href = "https://github.com/tcibinan/graph2viz/issues", classes = "github-button") {
+            a(href = "https://github.com/tcibinan/data2graph/issues", classes = "github-button") {
                 attributes.put("data-icon", "octicon-star")
                 attributes.put("aria-label", "Issue tcibinan/graph2viz on GitHub")
                 +"Issue"
@@ -175,37 +195,63 @@ private fun showGraphVisualizationTool(graphUrl: String?) {
         appendChild(controls)
         appendChild(canvas)
     }
-    window.fetch(Request(graphUrl)).then { response ->
-        response.text().then {
-            val graph: Graph = JSON.parse(Graph.serializer(), it)
-            elementById<HTMLCanvasElement>("main-canvas").apply {
-                graph.toViz(scrollWidth, scrollHeight).bindRendererOn(this)
-            }
-        }
-    }
 }
 
-private fun showPlaceholder() {
+private fun showEmptyGraphUrlPlaceholder() {
     val demoUrl = window.location.href + "?$GRAPH_URL_PARAMETER=data.json"
-    val placeholder = document.create.div {
-        style = "width: 100%; " +
-                "display: flex; " +
-                "flex-direction: column; " +
-                "justify-content: center; " +
-                "text-align: center; " +
-                "text-transform: uppercase; " +
-                "font-family: monospace; "
+    val placeholder = document.create.div(classes = "placeholder") {
         h1 {
-            +"Use $GRAPH_URL_PARAMETER parameter to specify graph source."
+            +"Use $GRAPH_URL_PARAMETER parameter to specify graph source"
         }
         small {
             +"Like here "
             a(href = demoUrl) {
-                style = "padding: 2px 6px 3px; " +
-                        "color: #bd4147; " +
-                        "text-decoration: none; "
                 +demoUrl
             }
+        }
+    }
+    document.body?.appendChild(placeholder)
+}
+
+private fun showUnreachableGraphUrlPlaceholder(graphUrl: String, error: Throwable) {
+    val placeholder = document.create.div(classes = "placeholder") {
+        h1 {
+            +"The requested "
+            a(href = graphUrl) {
+                +"graph url"
+            }
+            +" is unreachable"
+        }
+        small {
+            +"Error: $error"
+        }
+    }
+    document.body?.appendChild(placeholder)
+}
+
+private fun showBadResponseGraphUrlPlaceholder(graphUrl: String, status: Short) {
+    val placeholder = document.create.div(classes = "placeholder") {
+        h1 {
+            +"The requested "
+            a(href = graphUrl) {
+                +"graph url"
+            }
+            +" returns bad HTTP status"
+        }
+        small {
+            +"HTTP status: $status"
+        }
+    }
+    document.body?.appendChild(placeholder)
+}
+
+fun showBadlyFormattedGraphJsonPlaceholder(error: Throwable) {
+    val placeholder = document.create.div(classes = "placeholder") {
+        h1 {
+            +"Downloaded graph json parsing has failed"
+        }
+        small {
+            +"Error: $error"
         }
     }
     document.body?.appendChild(placeholder)

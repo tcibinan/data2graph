@@ -13,3 +13,5 @@ fun retrieveUrlParams(): Map<String, String> = window.location.search
         .filter { it.size == 2 }
         .map { it[0] to it[1] }
         .toMap()
+
+external fun decodeURIComponent(encodedURI: String): String

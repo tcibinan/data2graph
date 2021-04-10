@@ -33,3 +33,19 @@ body {
 .graph {
     flex-grow: 1;
 }
+
+.placeholder {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: monospace;
+}
+
+.placeholder a {
+    padding: 2px 6px 3px;
+    color: #bd4147;
+    text-decoration: none;
+}
